@@ -4,5 +4,4 @@
 <Strong>Viikko1</Strong>
 
 [gitlog.txt](http://github.com/jkukko/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
 [komentorivi.txt](https://github.com/jkukko/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
