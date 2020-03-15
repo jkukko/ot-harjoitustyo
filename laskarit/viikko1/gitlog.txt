@@ -1,0 +1,103 @@
+commit 60350e1591bbdc55585fe491665320c1249d3a0a
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:40:20 2020 +0200
+
+    tiedostoja kansio luotu ja 3 fileä
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 5e7f09dc46b492973263eed2c20751f0aa0832a2
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:37:02 2020 +0200
+
+    ekaa ja kolmatta muutettiin patch-muodossa
+
+ eka.txt    | 5 ++++-
+ kolmas.txt | 3 ++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+commit 27ef0ca6a8731cba247224a2c6e433cefdc6d64e
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:35:44 2020 +0200
+
+    tiedosto muutettu eka nimiseksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 3a02cb0f1baa46dccdb9031dfef3f658ad036237
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:34:15 2020 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 60c912cec6aafb1f28c59326c7faa1344ce12fee
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:32:41 2020 +0200
+
+    tiedosto.txt muutettu
+
+ tiedosto.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+commit 61353d3c676e979700530acba543111e7f3dbe8e
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:31:57 2020 +0200
+
+    tiedosto.txt lisätty tekstiä
+
+ tiedosto.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 085870933ea153601aab976f256c286764a240da
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:29:09 2020 +0200
+
+    stuff kansio ja tiedosto luoto
+
+ stuff/stuff_tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit efc6a42bc8066692693fdfc5725afb5c54ecc3f8
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:28:20 2020 +0200
+
+    toinen ja kolmas muutos
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit f4d6ff64a3daff71c65e853011875233b8fe1e4b
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:27:18 2020 +0200
+
+    kolmas luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 60053ae28f50f676be4ba9ac309d0a49670ae564
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:26:15 2020 +0200
+
+    muustos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit b3098572960cdf1afa5454cc64070734b02d2347
+Author: jkukko <joonas.kukkonen@gmail.com>
+Date:   Sun Mar 15 16:24:47 2020 +0200
+
+    tiedosto.txt luoto
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
