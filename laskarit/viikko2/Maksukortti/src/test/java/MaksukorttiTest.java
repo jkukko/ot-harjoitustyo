@@ -16,7 +16,7 @@ public class MaksukorttiTest {
 
     @Test
     public void konstruktoriAsettaaSaldonOikein() {
-        assertEquals("Kortilla on rahaa 10.0 euroa", kortti.toString());
+        assertEquals(10, kortti.toString());
     }
 
     @Test
