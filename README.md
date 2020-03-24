@@ -8,5 +8,7 @@
 [komentorivi.txt](https://github.com/jkukko/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
 <h2>Dokumentaatio</h2>
+
 [Vaatimusmäärittely](http://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/vaatimusm%C3%A4%C3%A4rittely.md)
+
 [Työaikakirjanpito](http://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/Ty%C3%B6aikakirjanpito.md)
