@@ -12,3 +12,7 @@
 [Vaatimusmäärittely](http://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/vaatimusm%C3%A4%C3%A4rittely.md)
 
 [Työaikakirjanpito](http://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/Ty%C3%B6aikakirjanpito.md)
+
+<h2>Koodi projektin suorittamiseen</h2>
+
+mvn compile exec:java -Dexec.mainClass=inventoryManagement.Main
