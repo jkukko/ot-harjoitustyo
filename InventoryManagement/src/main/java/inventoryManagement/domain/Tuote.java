@@ -1,17 +1,12 @@
 package inventoryManagement.domain;
 
 public class Tuote {
-    private int id;
     private String nimi;
     
-    public Tuote(int id, String nimi) {
-        this.id = id;
+    public Tuote(String nimi) {
         this.nimi = nimi;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getNimi() {
         return nimi;
@@ -19,6 +14,11 @@ public class Tuote {
 
     public void setNimi(String nimi) {
         this.nimi = nimi;
+    }
+
+    @Override
+    public String toString() {
+        return this.nimi;
     }
     
 }

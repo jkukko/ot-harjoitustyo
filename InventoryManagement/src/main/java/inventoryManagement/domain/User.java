@@ -1,18 +1,14 @@
 package inventoryManagement.domain;
 
 public class User {
-    private String name;
+    private int id;
     private String username;
     private String password;
     
-    public User(String name, String username, String password) {
-        this.name = name;
+    public User(int id, String username, String password) {
+        this.id = id;
         this.username = username;
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getUsername() {
@@ -23,9 +19,14 @@ public class User {
         return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public void setUsername(String username) {
         this.username = username;
@@ -34,14 +35,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof User)) {
-            return false;
-        }
-        
-        User other = (User) obj;
-        return username.equals(other.username);
-    }
-        
 }

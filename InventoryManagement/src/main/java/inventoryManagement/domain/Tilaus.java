@@ -44,6 +44,11 @@ public class Tilaus {
         this.sisaanTuleva = sisaanTuleva;
     }
 
+    @Override
+    public String toString() {
+        return "Tilaus{" + "tuote=" + tuote + ", paiva=" + paiva + ", sisaanTuleva=" + sisaanTuleva + ", maara=" + maara + '}';
+    }
+
     public void setMaara(Integer maara) {
         this.maara = maara;
     }

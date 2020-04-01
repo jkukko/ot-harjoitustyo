@@ -1,15 +1,16 @@
 package inventoryManagement.dao;
 
-import java.util.List;
 import inventoryManagement.domain.User;
+import java.util.List;
 
 public interface UserDao {
 
-    User create(User user) throws Exception;
+    User create(User user) ;
 
     User findByUsername(String username);
 
     List<User> getAll();
-    
+
+
     
 }
