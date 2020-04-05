@@ -24,6 +24,7 @@ public class TextUi {
         commands.put("3", "3 Take from inventory");
         commands.put("4", "4 Print current Inventory");
         commands.put("5", "5 Print Orher history");
+        commands.put("6", "6 Upload history data");
         commands.put("x", "x Exit");
     }
     
@@ -44,6 +45,8 @@ public class TextUi {
                 this.varastoService.tulostaKuvulaVarasto();
             } else if (command.equals("5")) {
                 printOrderHistorybyProduct();
+            } else if (command.equals("6")) {
+                this.varastoService.lataaHistoria();
             }
         }
     }
@@ -77,7 +80,6 @@ public class TextUi {
         String tuote = scanner.nextLine();
         this.varastoService.tulostaTuotteenKirjanpito(tuote);
     }
-    
     
     
 }
