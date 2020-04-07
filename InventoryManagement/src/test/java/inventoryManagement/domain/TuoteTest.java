@@ -19,7 +19,7 @@ public class TuoteTest {
     
     @Before
     public void setUp() {
-        this.tuote = new Tuote(1, "Maito");
+        this.tuote = new Tuote("Maito");
     }
     
     @Test
@@ -27,7 +27,16 @@ public class TuoteTest {
         assertEquals("Maito", this.tuote.getNimi());
     }
     
-    public TuoteTest() {
+    @Test
+    public void tuoteToStringTulostaaOikein() {
+        assertEquals("Maito", this.tuote.toString());
     }
+    
+    @Test
+    public void tuotteenNimiVoidaanAntaa() {
+        this.tuote.setNimi("Normimaito");
+        assertEquals("Normimaito", this.tuote.getNimi());
+    }
+    
     
 }

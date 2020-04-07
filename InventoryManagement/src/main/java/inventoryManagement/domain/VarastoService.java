@@ -148,5 +148,10 @@ public class VarastoService {
     }
     
     
+    public int palautaTuotteidenLKM() {
+        return this.tuoteDao.getAll().size();
+    }
+    
+    
     
 }

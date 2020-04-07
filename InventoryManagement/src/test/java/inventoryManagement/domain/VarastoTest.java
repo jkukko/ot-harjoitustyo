@@ -20,7 +20,7 @@ public class VarastoTest {
     
     @Test
     public void sisaanTulevaTilausKirjataanVarastoon() {
-        Tuote tuote = new Tuote(1, "Maito");
+        Tuote tuote = new Tuote("Maito");
         Tilaus tilaus = new Tilaus(tuote, new Date(2020, 3, 26), true, 10);
         this.varasto.kirjaaTilaus(tilaus);
         assertEquals(1, this.varasto.getTilaukset().size());
@@ -28,7 +28,7 @@ public class VarastoTest {
     
     @Test
     public void kuluvaVaratoLaskentaTehdaanOikein() {
-        Tuote tuote = new Tuote(1, "Maito");
+        Tuote tuote = new Tuote("Maito");
         Tilaus sisaanTulevaTilaus1 = new Tilaus(tuote, new Date(2020, 3, 26), true, 10);
         Tilaus sisaanTulevaTilaus2 = new Tilaus(tuote, new Date(2020, 3, 26), true, 10);
         Tilaus ulosTulevaTilaus1 = new Tilaus(tuote, new Date(2020, 3, 26), false, 5);
