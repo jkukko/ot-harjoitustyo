@@ -26,7 +26,7 @@ public class VarastoService {
     
     public Tilaus kirjaaTilaus(String name, int maara) {
         Date kirjausPvm = new Date();
-        if (this.tuoteDao.findByName(name)==null) {
+        if (this.tuoteDao.findByName(name) == null) {
             this.tuoteDao.create(new Tuote(name));
         }
         
@@ -44,7 +44,7 @@ public class VarastoService {
     
     private Tilaus kirjaaTilausTietyllePaivalle(String name, int maara, Date date) {
         Date kirjausPvm = date;
-        if (this.tuoteDao.findByName(name)==null) {
+        if (this.tuoteDao.findByName(name) == null) {
             this.tuoteDao.create(new Tuote(name));
         }
         
@@ -64,13 +64,13 @@ public class VarastoService {
     public int otaVarastosta(String name, int maara) {
         Date kirjausPvm = new Date();
         
-        if (this.tuoteDao.findByName(name)==null) {
+        if (this.tuoteDao.findByName(name) == null) {
             return 0;
         }
         
         Tuote tuote = this.tuoteDao.findByName(name);
         int nykyinenMaara = this.kuluvaTilanne.get(tuote);
-        if (nykyinenMaara<maara) {
+        if (nykyinenMaara < maara) {
             Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, nykyinenMaara);
             tilausDao.create(ulosMenevaTilaus);
             this.kuluvaTilanne.put(tuote, 0);
@@ -78,7 +78,7 @@ public class VarastoService {
         }
         Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, maara);
         tilausDao.create(ulosMenevaTilaus);
-        this.kuluvaTilanne.put(tuote, nykyinenMaara-maara);
+        this.kuluvaTilanne.put(tuote, nykyinenMaara - maara);
         return maara;
            
     }
@@ -86,13 +86,13 @@ public class VarastoService {
     public int otaVarastostaTietyllaPaivalla(String name, int maara, Date date) {
         Date kirjausPvm = date;
         
-        if (this.tuoteDao.findByName(name)==null) {
+        if (this.tuoteDao.findByName(name) == null) {
             return 0;
         }
         
         Tuote tuote = this.tuoteDao.findByName(name);
         int nykyinenMaara = this.kuluvaTilanne.get(tuote);
-        if (nykyinenMaara<maara) {
+        if (nykyinenMaara < maara) {
             Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, nykyinenMaara);
             tilausDao.create(ulosMenevaTilaus);
             this.kuluvaTilanne.put(tuote, 0);
@@ -100,7 +100,7 @@ public class VarastoService {
         }
         Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, maara);
         tilausDao.create(ulosMenevaTilaus);
-        this.kuluvaTilanne.put(tuote, nykyinenMaara-maara);
+        this.kuluvaTilanne.put(tuote, nykyinenMaara - maara);
         return maara;
            
     }    
@@ -134,7 +134,7 @@ public class VarastoService {
                 int m = Integer.parseInt(palat[2]) - 1;
                 int d = Integer.parseInt(palat[3]);
                 Date date = new Date(y, m, d);
-                if (b==true) {
+                if (b == true) {
                     kirjaaTilausTietyllePaivalle(palat[0], maara, date);
                 } else {
                     otaVarastostaTietyllaPaivalla(palat[0], maara, date);

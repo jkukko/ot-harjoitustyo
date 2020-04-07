@@ -69,11 +69,11 @@ public class GraphicUi extends Application {
 
         Label loginMessage = new Label();
 
-        loginButton.setOnAction(e->{
+        loginButton.setOnAction(e-> {
             String usenameValue = userTextField.getText();
             String pwValue = pwTextField.getText();
             System.out.println(usenameValue + ", " + pwValue);
-            if (this.userDao.userCheck(usenameValue, pwValue)==true) {
+            if (this.userDao.userCheck(usenameValue, pwValue) == true) {
                 System.out.println("Login succeed");
             } else {
                 System.out.println("Login failed");

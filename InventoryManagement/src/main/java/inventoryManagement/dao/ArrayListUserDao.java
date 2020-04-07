@@ -4,7 +4,7 @@ import inventoryManagement.domain.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayListUserDao implements UserDao{
+public class ArrayListUserDao implements UserDao {
     
     private List<User> users;
     
@@ -22,7 +22,7 @@ public class ArrayListUserDao implements UserDao{
     public User findByUsername(String username) {
         for (int i = 0; i < this.users.size(); i++) {
             
-            if (this.users.get(i).getUsername()==username) {
+            if (this.users.get(i).getUsername() == username) {
                 return this.users.get(i);
             }
             

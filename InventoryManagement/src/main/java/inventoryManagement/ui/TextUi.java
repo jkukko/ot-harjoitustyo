@@ -39,7 +39,7 @@ public class TextUi {
                 break;
             } else if (command.equals("2")) {
                 addOrderToInventory();
-            } else if (command.equals("3")){
+            } else if (command.equals("3")) {
                 takeFromInventory();
             } else if (command.equals("4")) {
                 this.varastoService.tulostaKuvulaVarasto();
