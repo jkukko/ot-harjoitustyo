@@ -10,6 +10,8 @@ public interface UserDao {
     User findByUsername(String username);
 
     List<User> getAll();
+    
+    Boolean userCheck(String username, String pw);
 
 
     
