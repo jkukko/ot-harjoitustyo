@@ -36,7 +36,7 @@ public class ArrayListUserDao implements UserDao {
     }
 
     @Override
-    public Boolean userCheck(String username, String pw) {
+    public Boolean login(String username, String pw) {
         
         for (int i = 0; i < this.users.size(); i++) {
             
@@ -44,10 +44,22 @@ public class ArrayListUserDao implements UserDao {
                     this.users.get(i).getPassword().equals(pw)) {
                 return true;
             }
-            
-            
+           
             
         }
+        return false;
+    }
+
+    @Override
+    public Boolean checkUsername(String username) {
+        for (int i = 0; i < this.users.size(); i++) {
+            
+            if (this.users.get(i).getUsername().equals(username)) {
+                return true;
+            }
+            
+        }
+        
         return false;
     }
     

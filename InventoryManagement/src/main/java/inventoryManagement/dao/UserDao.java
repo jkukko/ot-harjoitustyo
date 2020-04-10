@@ -11,7 +11,9 @@ public interface UserDao {
 
     List<User> getAll();
     
-    Boolean userCheck(String username, String pw);
+    Boolean login(String username, String pw);
+    
+    Boolean checkUsername(String username);
 
 
     

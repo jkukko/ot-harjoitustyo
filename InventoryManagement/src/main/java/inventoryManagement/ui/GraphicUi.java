@@ -12,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -25,70 +26,115 @@ public class GraphicUi extends Application {
     private VarastoService varastoService;
     private ArrayListUserDao userDao;
     
+    private Scene newUserScene;
+    private Scene loginScene;
+    private Scene mainScene;
+  
     @Override
     public void init() {
         this.varastoService = new VarastoService(new ArrayListTilausDao(), new ArrayListTuoteDao());
         this.userDao = new ArrayListUserDao();
         
-        this.userDao.create(new User(0, "Test", "Test"));
+        this.userDao.create(new User("Test", "Test"));
     }
     
-
-    public void login(Stage loginStage) throws Exception {
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-        Text sceneTitle = new Text("Welcome");
-        grid.add(sceneTitle, 0, 0);
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // login scene
         
-        // Username title
-        Label username = new Label("User name");
-        grid.add(username, 0, 1);
-
-        // Username textfield
-        TextField userTextField = new TextField();
-        grid.add(userTextField, 1, 1);
+        GridPane loginGrid = new GridPane();
+        loginGrid.setAlignment(Pos.CENTER);
+        loginGrid.setHgap(10);
+        loginGrid.setVgap(10);
+        loginGrid.setPadding(new Insets(25, 25, 25, 25));
+        Text loginTitle = new Text("Login");
+        loginGrid.add(loginTitle, 0, 0);
         
-        // Password title
-        Label pw = new Label("Password");
-        grid.add(pw, 0, 2);
+        // Username 
+        Label usernameLabel = new Label("Username");
+        TextField usernameInput = new TextField();
+        loginGrid.add(usernameLabel, 0, 1);
+        loginGrid.add(usernameInput, 1, 1);
         
-        // Password textfield
-        PasswordField pwTextField = new PasswordField();
-        grid.add(pwTextField, 1, 2);
+        // Password
+        Label passwordLabel = new Label("Password");
+        PasswordField passwordInput = new PasswordField();
+        loginGrid.add(passwordLabel, 0, 2);
+        loginGrid.add(passwordInput, 1, 2);
         
-        // Login Button
+        // Buttons
         Button loginButton = new Button("login");
-        grid.add(loginButton, 1, 3);
-        
-        // Create new user Button
         Button createButton = new Button("Create new user");
-        grid.add(createButton, 1, 4);
-
-        Label loginMessage = new Label();
-
+        loginGrid.add(loginButton, 1, 3);
+        loginGrid.add(createButton, 1, 4);
+        
         loginButton.setOnAction(e-> {
-            String usenameValue = userTextField.getText();
-            String pwValue = pwTextField.getText();
-            System.out.println(usenameValue + ", " + pwValue);
-            if (this.userDao.userCheck(usenameValue, pwValue) == true) {
+            String username = usernameInput.getText();
+            String password = passwordInput.getText();
+            if (this.userDao.login(username, password) == true) {
                 System.out.println("Login succeed");
+                primaryStage.setScene(this.mainScene);
             } else {
                 System.out.println("Login failed");
             }
         });
         
-        Scene scene = new Scene(grid);
-        loginStage.setScene(scene);
-        loginStage.setTitle("Login window");
-        loginStage.show();
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        login(primaryStage);
+        createButton.setOnAction(e-> {
+            primaryStage.setScene(this.newUserScene);
+        });
+        
+        this.loginScene = new Scene(loginGrid, 300, 250);
+        
+        // Create new user scene
+        GridPane newUserGrid = new GridPane();
+        newUserGrid.setAlignment(Pos.CENTER);
+        newUserGrid.setHgap(10);
+        newUserGrid.setHgap(10);
+        newUserGrid.setPadding(new Insets(25, 25, 25, 25));
+        Text newUserTitle = new Text("Create new user");
+        newUserGrid.add(newUserTitle, 0, 0);
+        
+        // Username
+        Label newUserUsernameLabel = new Label("Username");
+        TextField newUserUsernameInput = new TextField();
+        newUserGrid.add(newUserUsernameLabel, 0, 1);
+        newUserGrid.add(newUserUsernameInput, 1, 1);
+        
+        
+        // Password
+        Label newUserPasswordLabel = new Label("Password");
+        PasswordField newUserPasswordInput = new PasswordField();
+        newUserGrid.add(newUserPasswordLabel, 0, 2);
+        newUserGrid.add(newUserPasswordInput, 1, 2);
+        
+        // Buttons
+        Button saveNewUser = new Button("Save");
+        newUserGrid.add(saveNewUser, 1, 3);
+        
+        saveNewUser.setOnAction(e-> {
+            String username = newUserUsernameInput.getText();
+            String password = newUserPasswordInput.getText();
+            if (this.userDao.checkUsername(username) == false) {
+                System.out.println("New user created");
+                this.userDao.create(new User(username, password));
+                primaryStage.setScene(this.loginScene);
+            } else {
+                System.out.println("This username is already in use");
+            }
+        });
+        
+        this.newUserScene = new Scene(newUserGrid, 300, 250);
+        
+        
+        // Main scene
+        MenuBar menuBar = new MenuBar();
+        
+        // setup primary stage
+        primaryStage.setTitle("Inventory Management");
+        primaryStage.setScene(this.loginScene);
+        primaryStage.show();
+        
+        
     }
     
     public static void main(String[] args) {
