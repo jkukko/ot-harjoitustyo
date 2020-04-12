@@ -12,4 +12,9 @@
 |Graaffinen käyttöliittymä    |      2h       |   7.4.   |
 |Testien kehittäminen         |      1h       |   7.4.   |
 |Checkstyle ja jacoco määritys|    0,5h       |   7.4.   |
-|Total                        |     17h       |   7.4    |
+|JavaFx tutustuminen          |      2h       |  10.4.   |
+|Graffunen käyttöliittymä     |      2h       |  11.4.   |
+|Toimintalogiikka             |      1h       |  11.4    |
+|Graaffinen käyttöliittymä    |      3h       |  12.4    |
+|Toimintalogiikka             |      1h       |  12.4    |
+|Total                        |     27h       |  12.4    |
