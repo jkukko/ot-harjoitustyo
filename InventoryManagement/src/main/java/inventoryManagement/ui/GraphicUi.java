@@ -19,7 +19,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -53,6 +56,7 @@ public class GraphicUi extends Application {
             return false;
         }
     }
+    
     
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -126,7 +130,6 @@ public class GraphicUi extends Application {
         // Buttons
         Button saveNewUser = new Button("Save");
         createUserLayout.add(saveNewUser, 1, 3);
-                // Select Productthis.varastoService.listaTuoteNimista()
 
         saveNewUser.setOnAction(e-> {
             String username = newUserUsernameInput.getText();
@@ -207,6 +210,19 @@ public class GraphicUi extends Application {
                 
             }
         });
+        
+        // Kuluva Tilanne Varasto
+        TableView table = new TableView();
+        TableColumn productColumn = new TableColumn("Product");
+        productColumn.setMinWidth(100);
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("nimi"));
+        
+        TableColumn amountColumn = new TableColumn("Current Stock");
+        amountColumn.setMinWidth(100);
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("currentStock"));    
+                    
+        table.getColumns().addAll(productColumn, amountColumn);
+        
              
         // Handling menu events
         incomingOrderMenuItem.setOnAction(e -> {
@@ -231,6 +247,11 @@ public class GraphicUi extends Application {
             layout.setCenter(grid);
         });
         
+        allertMonitorMenuItem.setOnAction(e -> {
+            table.getItems().clear();
+            table.setItems(FXCollections.observableArrayList(this.varastoService.palautaTuotteet()));
+            layout.setCenter(table);
+        });
         this.mainScene = new Scene(layout, 300, 250);
 
         

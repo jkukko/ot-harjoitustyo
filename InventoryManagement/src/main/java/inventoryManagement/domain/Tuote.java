@@ -3,10 +3,20 @@ package inventoryManagement.domain;
 public class Tuote {
     private String nimi;
     private int safetyAmmount;
+    private int currentStock;
     
     public Tuote(String nimi) {
         this.nimi = nimi;
-        safetyAmmount = 0;
+        this.safetyAmmount = 0;
+        this.currentStock = 0;
+    }
+
+    public int getCurrentStock() {
+        return currentStock;
+    }
+
+    public void setCurrentStock(int currentStock) {
+        this.currentStock = currentStock;
     }
 
 

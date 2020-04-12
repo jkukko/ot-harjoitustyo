@@ -36,8 +36,10 @@ public class VarastoService {
         if (this.kuluvaTilanne.containsKey(tuote)) {
             int nykyinenMaara = this.kuluvaTilanne.get(tuote);
             this.kuluvaTilanne.put(tuote, nykyinenMaara + maara);
+            this.tuoteDao.findByName(name).setCurrentStock(nykyinenMaara + maara);
         } else {
             this.kuluvaTilanne.put(tuote, maara);
+            this.tuoteDao.findByName(name).setCurrentStock(maara);
         }
         
         return tilausDao.create(new Tilaus(tuote, kirjausPvm, true, maara));
@@ -54,8 +56,10 @@ public class VarastoService {
         if (this.kuluvaTilanne.containsKey(tuote)) {
             int nykyinenMaara = this.kuluvaTilanne.get(tuote);
             this.kuluvaTilanne.put(tuote, nykyinenMaara + maara);
+            this.tuoteDao.findByName(name).setCurrentStock(nykyinenMaara + maara);
         } else {
             this.kuluvaTilanne.put(tuote, maara);
+            this.tuoteDao.findByName(name).setCurrentStock(maara);
         }
         
         return tilausDao.create(new Tilaus(tuote, kirjausPvm, true, maara));
@@ -75,11 +79,13 @@ public class VarastoService {
             Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, nykyinenMaara);
             tilausDao.create(ulosMenevaTilaus);
             this.kuluvaTilanne.put(tuote, 0);
+            this.tuoteDao.findByName(name).setCurrentStock(0);
             return nykyinenMaara;
         }
         Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, maara);
         tilausDao.create(ulosMenevaTilaus);
         this.kuluvaTilanne.put(tuote, nykyinenMaara - maara);
+        this.tuoteDao.findByName(name).setCurrentStock(nykyinenMaara - maara);
         return maara;
            
     }
@@ -97,11 +103,13 @@ public class VarastoService {
             Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, nykyinenMaara);
             tilausDao.create(ulosMenevaTilaus);
             this.kuluvaTilanne.put(tuote, 0);
+            this.tuoteDao.findByName(name).setCurrentStock(0);
             return nykyinenMaara;
         }
         Tilaus ulosMenevaTilaus = new Tilaus(tuote, kirjausPvm, false, maara);
         tilausDao.create(ulosMenevaTilaus);
         this.kuluvaTilanne.put(tuote, nykyinenMaara - maara);
+        this.tuoteDao.findByName(name).setCurrentStock(nykyinenMaara - maara);
         return maara;
            
     }    
@@ -180,6 +188,10 @@ public class VarastoService {
         }
         
         return tuote;
+    }
+    
+    public List<Tuote> palautaTuotteet() {
+        return this.tuoteDao.getAll();
     }
     
 }
