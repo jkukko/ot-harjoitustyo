@@ -5,6 +5,7 @@ import inventoryManagement.dao.TuoteDao;
 import java.io.File;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -152,6 +153,33 @@ public class VarastoService {
         return this.tuoteDao.getAll().size();
     }
     
+    public List<Tuote> palautaTuotteetJotkaAlleRajan() {
+        List<Tuote> lista = new ArrayList<>();
+        for (Map.Entry<Tuote, Integer> entry : kuluvaTilanne.entrySet()) {
+            Tuote key = entry.getKey();
+            Integer value = entry.getValue();
+            
+            if (value < key.getSafetyAmmount()) {
+                lista.add(key);
+            }
+            
+        }
+        return lista;
+    }
+
+    public HashMap<Tuote, Integer> getKuluvaTilanne() {
+        return kuluvaTilanne;
+    }
     
+    public List<String> listaTuoteNimista() {
+        List<String> tuote = new ArrayList<>();
+        
+        for (Map.Entry<Tuote, Integer> entry : kuluvaTilanne.entrySet()) {
+            Tuote key = entry.getKey();
+            tuote.add(key.getNimi());
+        }
+        
+        return tuote;
+    }
     
 }

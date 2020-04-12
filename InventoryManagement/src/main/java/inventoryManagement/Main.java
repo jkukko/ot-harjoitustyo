@@ -12,7 +12,7 @@ public class Main {
         
         
         
-        System.out.println("Valitse Käyttöliittymä");
+        /*System.out.println("Valitse Käyttöliittymä");
         System.out.println("1 tekstikäyttöliittymä");
         System.out.println("Muuten graafinenkäyttöliittymä");
         String valinta = scanner.nextLine();
@@ -22,7 +22,10 @@ public class Main {
         } else {
             GraphicUi ui = new GraphicUi();
             ui.main(args);
-        }
+        }*/
+        GraphicUi ui = new GraphicUi();
+        ui.main(args);
+
         
     }
     
