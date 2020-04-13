@@ -216,14 +216,26 @@ public class GraphicUi extends Application {
         // Current Stock elements
         TableView table = new TableView();
         TableColumn productColumn = new TableColumn("Product");
-        productColumn.setMinWidth(100);
+        productColumn.setMinWidth(150);
         productColumn.setCellValueFactory(new PropertyValueFactory<>("nimi"));
         
         TableColumn amountColumn = new TableColumn("Current Stock");
-        amountColumn.setMinWidth(100);
-        amountColumn.setCellValueFactory(new PropertyValueFactory<>("currentStock"));    
+        amountColumn.setMinWidth(150);
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("currentStock"));
+        
+        TableColumn safetyColumn = new TableColumn("Safety limit");
+        safetyColumn.setMinWidth(150);
+        safetyColumn.setCellValueFactory(new PropertyValueFactory<>("safetyAmmount"));
                     
-        table.getColumns().addAll(productColumn, amountColumn);
+        TableColumn differenceColum = new TableColumn("Difference");
+        differenceColum.setMinWidth(150);
+        differenceColum.setCellValueFactory(new PropertyValueFactory<>("Difference"));
+        
+        table.getColumns().addAll(productColumn, amountColumn, safetyColumn);
+        
+        TableView allertTable = new TableView();
+        allertTable.getColumns().addAll(productColumn, differenceColum, amountColumn, safetyColumn);
+        
         
         
         // Edit product elements

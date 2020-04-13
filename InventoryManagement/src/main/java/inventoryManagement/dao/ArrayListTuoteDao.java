@@ -44,6 +44,21 @@ public class ArrayListTuoteDao implements TuoteDao {
     public Tuote changeSafetyLimit(String name, int amount) {
         Tuote t = this.findByName(name);
         t.setSafetyAmmount(amount);
+        t.setDifference(t.getCurrentStock() - amount);
+        return t;
+    }
+
+    @Override
+    public Integer getSafetyStoct(String name) {
+        Tuote t = this.findByName(name);
+        return t.getSafetyAmmount();
+    }
+
+    @Override
+    public Tuote changeCurrentStock(String name, int amount) {
+        Tuote t = findByName(name);
+        t.setCurrentStock(amount);
+        t.setDifference(amount - t.getSafetyAmmount());
         return t;
     }
     

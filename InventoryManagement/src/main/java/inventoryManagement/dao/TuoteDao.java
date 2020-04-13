@@ -13,4 +13,8 @@ public interface TuoteDao {
     
     Tuote changeSafetyLimit(String name, int amount);
     
+    Integer getSafetyStoct(String name);
+    
+    Tuote changeCurrentStock(String name, int amount);
+    
 }

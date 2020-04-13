@@ -4,11 +4,21 @@ public class Tuote {
     private String nimi;
     private int safetyAmmount;
     private int currentStock;
+    private int difference;
     
     public Tuote(String nimi) {
         this.nimi = nimi;
         this.safetyAmmount = 0;
         this.currentStock = 0;
+        this.difference = 0;
+    }
+
+    public int getDifference() {
+        return difference;
+    }
+
+    public void setDifference(int difference) {
+        this.difference = difference;
     }
 
     public int getCurrentStock() {
