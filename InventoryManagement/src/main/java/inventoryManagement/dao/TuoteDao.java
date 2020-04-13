@@ -11,4 +11,6 @@ public interface TuoteDao {
     
     List<Tuote> getAll();
     
+    Tuote changeSafetyLimit(String name, int amount);
+    
 }

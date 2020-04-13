@@ -39,5 +39,12 @@ public class ArrayListTuoteDao implements TuoteDao {
     public List<Tuote> getAll() {
         return this.tuotteet;
     }
+
+    @Override
+    public Tuote changeSafetyLimit(String name, int amount) {
+        Tuote t = this.findByName(name);
+        t.setSafetyAmmount(amount);
+        return t;
+    }
     
 }

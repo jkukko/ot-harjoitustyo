@@ -194,4 +194,11 @@ public class VarastoService {
         return this.tuoteDao.getAll();
     }
     
+    public int getSafetyStockLimit(String name) {
+        return this.tuoteDao.findByName(name).getSafetyAmmount();
+    }
+    
+    public void changeSafetyStock(String name, int amount) {
+        this.tuoteDao.changeSafetyLimit(name, amount);
+    }
 }

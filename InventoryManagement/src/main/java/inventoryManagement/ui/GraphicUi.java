@@ -149,14 +149,16 @@ public class GraphicUi extends Application {
         MenuBar menuBar = new MenuBar();
         Menu menuOptions = new Menu("_Options");
         MenuItem incomingOrderMenuItem = new MenuItem("Incoming Order");
-        MenuItem allertMonitorMenuItem = new MenuItem("Allert monitor");
+        MenuItem currentInventoryMenuItem = new MenuItem("Current Inventory");
         MenuItem takeFromInventoryMenuItem = new MenuItem("Take from stock");
         MenuItem historyMenuItem = new MenuItem("History View");
+        MenuItem editProductMenuItem = new MenuItem("Edit Product");
         menuOptions.getItems().addAll(
                 takeFromInventoryMenuItem, 
                 incomingOrderMenuItem, 
-                allertMonitorMenuItem,
-                historyMenuItem);
+                currentInventoryMenuItem,
+                historyMenuItem,
+                editProductMenuItem);
         menuBar.getMenus().addAll(menuOptions);
              
         // Create layout
@@ -211,7 +213,7 @@ public class GraphicUi extends Application {
             }
         });
         
-        // Kuluva Tilanne Varasto
+        // Current Stock elements
         TableView table = new TableView();
         TableColumn productColumn = new TableColumn("Product");
         productColumn.setMinWidth(100);
@@ -223,7 +225,24 @@ public class GraphicUi extends Application {
                     
         table.getColumns().addAll(productColumn, amountColumn);
         
+        
+        // Edit product elements
+        Label safetyLimitLabel = new Label("Safety limit");
+        TextField safetyLimitTextField = new TextField();
              
+        productList.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
+            int amount = this.varastoService.getSafetyStockLimit(newValue.toString());
+            safetyLimitTextField.setText(Integer.toString(amount));
+        });
+        
+        Button editProductButton = new Button("Save");
+        
+        editProductButton.setOnAction(e-> {
+            String selectedProduct = productList.getValue().toString();
+            int amount = Integer.parseInt(safetyLimitTextField.getText());
+            this.varastoService.changeSafetyStock(selectedProduct, amount);
+        });
+        
         // Handling menu events
         incomingOrderMenuItem.setOnAction(e -> {
             grid.getChildren().clear();
@@ -247,21 +266,32 @@ public class GraphicUi extends Application {
             layout.setCenter(grid);
         });
         
-        allertMonitorMenuItem.setOnAction(e -> {
+        currentInventoryMenuItem.setOnAction(e -> {
             table.getItems().clear();
             table.setItems(FXCollections.observableArrayList(this.varastoService.palautaTuotteet()));
             layout.setCenter(table);
         });
-        this.mainScene = new Scene(layout, 300, 250);
+        
+        editProductMenuItem.setOnAction(e -> {
+            grid.getChildren().clear();
+            grid.add(productLabel, 0, 0);
+            grid.add(safetyLimitLabel, 1, 0);            
+            grid.add(productList, 0, 1);
+            productList.setEditable(false);
+            grid.add(safetyLimitTextField, 1, 1);
+            grid.add(editProductButton, 0, 2);
+            layout.setCenter(grid);
+        });
 
+
+        this.mainScene = new Scene(layout, 300, 250);
         
         // setup primary stage
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
         primaryStage.setTitle("Inventory Management");
         primaryStage.setScene(this.loginScene);
         primaryStage.show();
-        
-        
+           
     }
     
     public static void main(String[] args) {
