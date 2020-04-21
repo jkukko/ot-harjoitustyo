@@ -17,4 +17,5 @@
 |Toimintalogiikka             |      1h       |  11.4    |
 |Graaffinen käyttöliittymä    |      3h       |  12.4    |
 |Toimintalogiikka             |      1h       |  12.4    |
-|Total                        |     27h       |  12.4    |
+|Checksyle viritystä	      |    1,5h	      |  21.4    |
+|Total                        |   28,5h       |  21.4    |
