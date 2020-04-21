@@ -15,4 +15,4 @@ Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria, ja koodin pakka
 
 Kun kijautumisnäkymässä oleviin syöttökenttiin, 'username' ja 'password', on kirjattu arvot ja klikataan loginButtonia sovellus etenee seuraavista:
 
-<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/a-2.png width="160">
+<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/a-2.png" width="160">
