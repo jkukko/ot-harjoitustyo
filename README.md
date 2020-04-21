@@ -15,6 +15,10 @@
 
 [Arkkitehtuurikuvaus](https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+<h2>Releaset</h2>
+
+[Viikko 5](https://github.com/jkukko/ot-harjoitustyo/releases/tag/viikko5)
+
 <h2>Koodi projektin suorittamiseen</h2>
 
 mvn compile exec:java -Dexec.mainClass=inventoryManagement.Main
