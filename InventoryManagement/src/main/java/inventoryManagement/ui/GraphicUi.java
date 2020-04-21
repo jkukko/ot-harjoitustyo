@@ -237,9 +237,7 @@ public class GraphicUi extends Application {
         differenceColum.setMinWidth(150);
         differenceColum.setCellValueFactory(new PropertyValueFactory<>("Difference"));
         
-        table.getColumns().addAll(productColumn, amountColumn, safetyColumn);
-        
-        
+        table.getColumns().addAll(productColumn, amountColumn, safetyColumn, differenceColum);
         
         
         
@@ -249,7 +247,6 @@ public class GraphicUi extends Application {
              
         
         Button editProductButton = new Button("Save");
-        
         
         // History view elements
         ObservableList<XYChart.Series<Date, Integer>> series = FXCollections.observableArrayList();
