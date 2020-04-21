@@ -27,6 +27,10 @@ Testit suoritetaan komennolla
 
 `mvn test`
 
+Testikattavuusraportti luodaan komennolla
+
+`mvn jacoco:report`
+
 <h3>Koodi projektin suorittamiseen</h3>
 
 `mvn compile exec:java -Dexec.mainClass=inventoryManagement.Main`
