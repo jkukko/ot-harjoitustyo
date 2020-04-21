@@ -31,6 +31,14 @@ Testikattavuusraportti luodaan komennolla
 
 `mvn jacoco:report`
 
+<h3>Suoritettavan jarin generointi</h3>
+
+`mvn package`
+
 <h3>Koodi projektin suorittamiseen</h3>
 
 `mvn compile exec:java -Dexec.mainClass=inventoryManagement.Main`
+
+<h3>Checkstyle</h3>
+
+`mvn jxr:jxr checkstyle:checkstyle`
