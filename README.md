@@ -25,8 +25,8 @@
 
 Testit suoritetaan komennolla
 
-mvn test
+`mvn test`
 
 <h3>Koodi projektin suorittamiseen</h3>
 
-mvn compile exec:java -Dexec.mainClass=inventoryManagement.Main
+`mvn compile exec:java -Dexec.mainClass=inventoryManagement.Main`
