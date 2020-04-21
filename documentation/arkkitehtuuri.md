@@ -9,3 +9,8 @@ Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria, ja koodin pakka
 <li>Pakkaus inventoryManagement.ui sisältää JavaFX:llä toteutun käyttöliittymän</li>
 <li>Pakkaus inventoryManagement.domain sisältää sovelluslogiikan</li>
 <li>Pakkaus inventoryManagement.dao sisältää tietojen tallennus logiikan</li>
+
+<h2>Päätoiminnallisuudet</h2>
+<h3>Käyttäjän kirjautuminen</h3>
+Kun kijautumisnäkymässä oleviin syöttökenttiin, 'username' ja 'password', on kirjattu arvot ja klikataan loginButtonia sovellus etenee seuraavista:
+
