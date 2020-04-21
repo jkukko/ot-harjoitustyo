@@ -5,13 +5,17 @@ import inventoryManagement.dao.ArrayListTuoteDao;
 import inventoryManagement.dao.ArrayListUserDao;
 import inventoryManagement.domain.User;
 import inventoryManagement.domain.VarastoService;
+import java.util.Date;
 import java.util.List;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -103,7 +107,7 @@ public class GraphicUi extends Application {
             primaryStage.setScene(this.newUserScene);
         });
         
-        this.loginScene = new Scene(loginLayout, 300, 250);
+        this.loginScene = new Scene(loginLayout, 620, 300);
         
         // Create new user scene
         GridPane createUserLayout = new GridPane();
@@ -143,7 +147,7 @@ public class GraphicUi extends Application {
             }
         });
         
-        this.newUserScene = new Scene(createUserLayout, 300, 250);
+        this.newUserScene = new Scene(createUserLayout, 620, 300);
         
         // Create menu
         MenuBar menuBar = new MenuBar();
@@ -153,12 +157,14 @@ public class GraphicUi extends Application {
         MenuItem takeFromInventoryMenuItem = new MenuItem("Take from stock");
         MenuItem historyMenuItem = new MenuItem("History View");
         MenuItem editProductMenuItem = new MenuItem("Edit Product");
+        MenuItem allertMenuItem = new MenuItem("Allert monitor");
         menuOptions.getItems().addAll(
                 takeFromInventoryMenuItem, 
                 incomingOrderMenuItem, 
                 currentInventoryMenuItem,
                 historyMenuItem,
-                editProductMenuItem);
+                editProductMenuItem,
+                allertMenuItem);
         menuBar.getMenus().addAll(menuOptions);
              
         // Create layout
@@ -233,8 +239,7 @@ public class GraphicUi extends Application {
         
         table.getColumns().addAll(productColumn, amountColumn, safetyColumn);
         
-        TableView allertTable = new TableView();
-        allertTable.getColumns().addAll(productColumn, differenceColum, amountColumn, safetyColumn);
+        
         
         
         
@@ -242,12 +247,15 @@ public class GraphicUi extends Application {
         Label safetyLimitLabel = new Label("Safety limit");
         TextField safetyLimitTextField = new TextField();
              
-        productList.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
-            int amount = this.varastoService.getSafetyStockLimit(newValue.toString());
-            safetyLimitTextField.setText(Integer.toString(amount));
-        });
         
         Button editProductButton = new Button("Save");
+        
+        
+        // History view elements
+        ObservableList<XYChart.Series<Date, Integer>> series = FXCollections.observableArrayList();
+        ObservableList<XYChart.Data<Date, Integer>> data1 = FXCollections.observableArrayList(this.varastoService.dataForVisualisation("Maito"));
+        series.add(new XYChart.Series<>("Series1", data1));
+        NumberAxis yAxis = new NumberAxis();
         
         editProductButton.setOnAction(e-> {
             String selectedProduct = productList.getValue().toString();
@@ -255,7 +263,7 @@ public class GraphicUi extends Application {
             this.varastoService.changeSafetyStock(selectedProduct, amount);
         });
         
-        // Handling menu events
+        // HaTableView allertTable = new TableView();ndling menu events
         incomingOrderMenuItem.setOnAction(e -> {
             grid.getChildren().clear();
             grid.add(productLabel, 0, 0);
@@ -285,6 +293,10 @@ public class GraphicUi extends Application {
         });
         
         editProductMenuItem.setOnAction(e -> {
+            productList.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
+                int amount = this.varastoService.getSafetyStockLimit(newValue.toString());
+                safetyLimitTextField.setText(Integer.toString(amount));
+            });
             grid.getChildren().clear();
             grid.add(productLabel, 0, 0);
             grid.add(safetyLimitLabel, 1, 0);            
@@ -293,10 +305,24 @@ public class GraphicUi extends Application {
             grid.add(safetyLimitTextField, 1, 1);
             grid.add(editProductButton, 0, 2);
             layout.setCenter(grid);
+
+
+        });
+        /*
+        allertMenuItem.setOnAction(e -> {
+            TableView allertTable = new TableView();
+            allertTable.getItems().clear();
+            allertTable.getColumns().addAll(productColumn, differenceColum, amountColumn, safetyColumn);
+            allertTable.setItems(FXCollections.observableArrayList(this.varastoService.palautaTuotteetJotkaAlleRajan()));
+            layout.setCenter(allertTable);
+        });
+        */
+        
+        historyMenuItem.setOnAction(e -> {
+            
         });
 
-
-        this.mainScene = new Scene(layout, 300, 250);
+        this.mainScene = new Scene(layout, 620, 300);
         
         // setup primary stage
         setUserAgentStylesheet(STYLESHEET_CASPIAN);

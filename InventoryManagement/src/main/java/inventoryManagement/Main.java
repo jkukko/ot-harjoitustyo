@@ -23,10 +23,7 @@ public class Main {
             GraphicUi ui = new GraphicUi();
             ui.main(args);
         }*/
-        GraphicUi ui = new GraphicUi();
-        ui.main(args);
-
-        
+        GraphicUi.main(args);
     }
     
 }

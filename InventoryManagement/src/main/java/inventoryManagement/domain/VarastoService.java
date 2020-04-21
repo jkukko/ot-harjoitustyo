@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 
 
 public class VarastoService {
@@ -163,12 +166,11 @@ public class VarastoService {
     
     public List<Tuote> palautaTuotteetJotkaAlleRajan() {
         List<Tuote> lista = new ArrayList<>();
-        for (Map.Entry<Tuote, Integer> entry : kuluvaTilanne.entrySet()) {
-            Tuote key = entry.getKey();
-            Integer value = entry.getValue();
+        List<Tuote> tuotteet = this.tuoteDao.getAll();
+        for (int i = 0; i < tuotteet.size(); i++) {
             
-            if (value < key.getSafetyAmmount()) {
-                lista.add(key);
+            if (tuotteet.get(i).getDifference() <= 0) {
+                lista.add(tuotteet.get(i));
             }
             
         }
@@ -200,6 +202,22 @@ public class VarastoService {
     
     public void changeSafetyStock(String name, int amount) {
         this.tuoteDao.changeSafetyLimit(name, amount);
+    }
+    
+    public ObservableList<XYChart.Data<Date, Integer>> dataForVisualisation(String tuote) {
+        List<Tilaus> tilaukset = this.tilausDao.findByTuoteName(tuote);
+        ObservableList<XYChart.Data<Date, Integer>> arvot = FXCollections.observableArrayList();
+        
+        for (int i = 0; i < tilaukset.size(); i++) {
+            Tilaus t = tilaukset.get(i);
+            
+            if (t.isSisaanTuleva() == true) {
+                arvot.add(new XYChart.Data<Date, Integer>(t.getPaiva(), t.getMaara()));
+            }
+            
+        }
+        
+        return arvot;
     }
     
 }
