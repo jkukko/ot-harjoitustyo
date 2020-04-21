@@ -19,6 +19,14 @@
 
 [Viikko 5](https://github.com/jkukko/ot-harjoitustyo/releases/tag/viikko5)
 
-<h2>Koodi projektin suorittamiseen</h2>
+<h2>Komentorivitoiminnot</h2>
+
+<h3>Testaus</h3>
+
+Testit suoritetaan komennolla
+
+mvn test
+
+<h3>Koodi projektin suorittamiseen</h3>
 
 mvn compile exec:java -Dexec.mainClass=inventoryManagement.Main
