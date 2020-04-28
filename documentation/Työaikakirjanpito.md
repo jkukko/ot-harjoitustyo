@@ -20,4 +20,5 @@
 |Checksyle viritystä	      |    1,5h	      |  21.4    |
 |Arkkitehtuuridokumentti      |    1,5h       |  21.4    |
 |Testien kehittäminen         |      1h       |  21.4    |
-|Total                        |     31h       |  21.4    |
+|Refactorointia               |      1h       |  28.4    |
+|Total                        |     32h       |  21.4    |
