@@ -1,11 +1,16 @@
 <h1>Ohjelmistotekniikka, kevät 2020</h1>
 
+
 <h2>Tehtävät</h2>
 <Strong>Viikko1</Strong>
 
 [gitlog.txt](http://github.com/jkukko/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
 
 [komentorivi.txt](https://github.com/jkukko/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+
+
+<h2>InventoryManagement</h2>
+Sovelluksen avulla käyttäjillä on mahdollista pitää kirjaa varastotilanteesta. Sovelluksessa on mahdollista kirjata varastoon tavaraa. Tämän lisäksi käyttäjä voi ottaa varastosta tuotteita. Varastotilanteen tilanteen ylläpitämiseksi varastossa voi lisätä tuotteille varmuuslimittejä, ja siten nähdä mitkä tuotteet ovat loppumassa. Tämän lisäksi ohjelmasta voi tutkia tuotteet varastohistoriaa.
 
 <h2>Dokumentaatio</h2>
 
