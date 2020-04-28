@@ -14,7 +14,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 import inventoryManagement.dao.ProductDao;
 import inventoryManagement.dao.OrderDao;
-
+/**
+ * 
+ * This class is responsible of application logic
+ */
 
 public class InventoryService {
     
@@ -27,6 +30,13 @@ public class InventoryService {
         this.productDao = tuoteDao;
         this.currentSituation = new HashMap<>();
     }
+    
+    /**
+     * Adding incoming order to Inventory
+     * @param name  product name
+     * @param amount amount of product in order
+     * @return order
+     */
     
     public Order incomingOrder(String name, int amount) {
         Date date = new Date();
@@ -48,6 +58,14 @@ public class InventoryService {
         return orderDao.create(new Order(product, date, true, amount));
     }
     
+    /**
+     * incoming order in specific day
+     * @param name product name
+     * @param amount amount of product in order
+     * @param date specific registration date
+     * @return 
+     */
+    
     private Order incomingOrderSpecificDay(String name, int amount, Date date) {
         Date specificDay = date;
         if (this.productDao.findByName(name) == null) {
@@ -68,6 +86,12 @@ public class InventoryService {
         return orderDao.create(new Order(product, specificDay, true, amount));
     }
 
+    /**
+     * taking product from inventory
+     * @param name product name
+     * @param amount amount of product in order
+     * @return 
+     */
 
     public int outGoingOrder(String name, int amount) {
         Date date = new Date();
@@ -93,6 +117,14 @@ public class InventoryService {
            
     }
     
+    /**
+     * taking product in specific date
+     * @param name product name
+     * @param amount amount of product in order
+     * @param date spefic registration date
+     * @return 
+     */
+    
     public int outGoingOrderSpecificDay(String name, int amount, Date date) {
         Date specificDay = date;
         
@@ -117,6 +149,10 @@ public class InventoryService {
            
     }    
     
+    /**
+     * Print current inventory: product name and amount
+     */
+    
     public void printCurrentInventory() {
         for (Map.Entry<Product, Integer> entry : currentSituation.entrySet()) {
             Product key = entry.getKey();
@@ -125,6 +161,11 @@ public class InventoryService {
             
         }
     }
+    
+    /**
+     * Print orders of specific product
+     * @param name product name
+     */
     
     public void printProductOrders(String name) {
         List<Order> orders = this.orderDao.findByTuoteName(name);
