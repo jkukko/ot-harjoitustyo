@@ -10,6 +10,9 @@ Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria, ja koodin pakka
 <li>Pakkaus inventoryManagement.domain sisältää sovelluslogiikan</li>
 <li>Pakkaus inventoryManagement.dao sisältää tietojen tallennus logiikan</li>
 
+<h2>Sovelluslogiikka</h2>
+Sovelluksen loogisen datamallin muodostavat Product ja Order. User-luokaa käytetään tällä hetkellä ainoastaan kirjautumiseen. Toiminnalisuudesta vastaa InventoryService luokka. 
+
 <h2>Päätoiminnallisuudet</h2>
 <h3>Käyttäjän kirjautuminen</h3>
 
