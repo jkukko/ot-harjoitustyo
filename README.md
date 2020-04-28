@@ -13,7 +13,7 @@
 
 [Työaikakirjanpito](http://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/Ty%C3%B6aikakirjanpito.md)
 
-[Arkkitehtuurikuvaus](https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/arkkitehtuuri.md)
+[Arkkitehtuurikuvaus](https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
 
 <h2>Releaset</h2>
 
