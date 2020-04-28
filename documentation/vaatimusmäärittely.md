@@ -14,7 +14,7 @@ Tarkoituksena on myös lisätä pääkäyttäjä, jolla on suuremman oikeudet.
 <h3>Kirjautumisen jälkeen</h3>
 <li>Käyttäjä näkee listan tuotteista missä varastotaso on alhainen <strong>kesken</strong></li>
 <li>Käyttäjä voi listata kaikki tuotteet järjestelmässä <strong>tehty</strong></li>
-<li>Käyttäjä voi kirjata varastoon tavaraa <stong>tehty</strong></li>
+<li>Käyttäjä voi kirjata varastoon tavaraa <strong>tehty</strong></li>
 <li>Käyttäjä voi kuluttaa varastosta tavaraa <strong>tehty</strong></li>
 <li>Käyttäjä voi tutkia yksittäisen tuotteen varastohistoriaa <strong>ei tehty</strong></li>
 <li>Käyttäjä voi kirjautua ulos järjestelmästä</li>
