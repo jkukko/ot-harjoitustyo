@@ -21,4 +21,6 @@
 |Arkkitehtuuridokumentti      |    1,5h       |  21.4    |
 |Testien kehittäminen         |      1h       |  21.4    |
 |Refactorointia               |      1h       |  28.4    |
-|Total                        |     32h       |  21.4    |
+|Uutta toiminnallisuutta      |      2h       |  28.4    |
+|Dokumentointia               |      1h       |  28.4    |
+|Total                        |     35h       |  21.4    |
