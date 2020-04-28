@@ -12,11 +12,11 @@ Tarkoituksena on myös lisätä pääkäyttäjä, jolla on suuremman oikeudet.
 <li>Käyttäjä voi luoda järjestelmään käyttäjätunnuksen. Käyttötunnusella on tietyt vaatimukset <strong>tehty</strong>  </li> 
 <li>Käyttäjä voi kirjautua järjestelmään. <strong>tehty</strong> Jos käyttäjää ei ole ohjelma ilmoittaa tästä, sekä ehdottaa haluaako käyttäjä luoda tunnuksen<strong>ei tehty</strong></li>
 <h3>Kirjautumisen jälkeen</h3>
-<li>Käyttäjä näkee listan tuotteista missä varastotaso on alhainen<strong>kesken</stong></li>
-<li>Käyttäjä voi listata kaikki tuotteet järjestelmässä<strong>tehty</strong></li>
-<li>Käyttäjä voi kirjata varastoon tavaraa<stong>tehty</strong></li>
-<li>Käyttäjä voi kuluttaa varastosta tavaraa<strong>tehty</strong></li>
-<li>Käyttäjä voi tutkia yksittäisen tuotteen varastohistoriaa<strong>ei tehty</strong></li>
+<li>Käyttäjä näkee listan tuotteista missä varastotaso on alhainen <strong>kesken</strong></li>
+<li>Käyttäjä voi listata kaikki tuotteet järjestelmässä <strong>tehty</strong></li>
+<li>Käyttäjä voi kirjata varastoon tavaraa <stong>tehty</strong></li>
+<li>Käyttäjä voi kuluttaa varastosta tavaraa <strong>tehty</strong></li>
+<li>Käyttäjä voi tutkia yksittäisen tuotteen varastohistoriaa <strong>ei tehty</strong></li>
 <li>Käyttäjä voi kirjautua ulos järjestelmästä</li>
 <h2>Jatkokehitys</h2>
 <li>Graafinen esutys varastohistoriasta</Li>
