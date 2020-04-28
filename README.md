@@ -15,9 +15,13 @@
 
 [Arkkitehtuurikuvaus](https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/arkkitehtuuri.md)
 
+[Käyttöohje](https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/K%C3%A4ytt%C3%B6ohje.md)
+
 <h2>Releaset</h2>
 
 [Viikko 5](https://github.com/jkukko/ot-harjoitustyo/releases/tag/viikko5)
+
+[Viikko 6](https://github.com/jkukko/ot-harjoitustyo/releases/tag/Viikko6)
 
 <h2>Komentorivitoiminnot</h2>
 
