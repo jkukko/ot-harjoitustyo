@@ -1,10 +1,10 @@
 package inventoryManagement.ui;
 
-import inventoryManagement.dao.ArrayListTilausDao;
-import inventoryManagement.dao.ArrayListTuoteDao;
+import inventoryManagement.dao.ArrayListOrderDao;
+import inventoryManagement.dao.ArrayListProductDao;
 import inventoryManagement.dao.ArrayListUserDao;
 import inventoryManagement.domain.User;
-import inventoryManagement.domain.VarastoService;
+import inventoryManagement.domain.InventoryService;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +35,7 @@ import javafx.stage.Stage;
 
 public class GraphicUi extends Application {
     
-    private VarastoService varastoService;
+    private InventoryService varastoService;
     private ArrayListUserDao userDao;
     
     private Scene newUserScene;
@@ -45,11 +45,11 @@ public class GraphicUi extends Application {
   
     @Override
     public void init() {
-        this.varastoService = new VarastoService(new ArrayListTilausDao(), new ArrayListTuoteDao());
+        this.varastoService = new InventoryService(new ArrayListOrderDao(), new ArrayListProductDao());
         this.userDao = new ArrayListUserDao();
         
         this.userDao.create(new User("Test", "Test"));
-        this.varastoService.lataaHistoria();
+        this.varastoService.loadHistory();
     }
     
     private boolean isInt(TextField input) {
@@ -171,7 +171,7 @@ public class GraphicUi extends Application {
         BorderPane layout = new BorderPane();
         layout.setTop(menuBar);
         ComboBox productList = new ComboBox(
-            FXCollections.observableArrayList(this.varastoService.listaTuoteNimista()));
+            FXCollections.observableArrayList(this.varastoService.getListOfProductNames()));
         
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -190,9 +190,9 @@ public class GraphicUi extends Application {
             if (isInt(inOrderAmount) == true) {
                 String selectedProduct = productList.getValue().toString();
                 int amount = Integer.parseInt(inOrderAmount.getText());
-                this.varastoService.kirjaaTilaus(selectedProduct, amount);
+                this.varastoService.incomingOrder(selectedProduct, amount);
                 productList.setItems(
-                        FXCollections.observableArrayList(this.varastoService.listaTuoteNimista()));
+                        FXCollections.observableArrayList(this.varastoService.getListOfProductNames()));
                 inOrderAmount.clear();
             } else {
                 inOrderAmount.setStyle("-fx-text-fill: red;");                
@@ -209,9 +209,9 @@ public class GraphicUi extends Application {
             if (isInt(outOrderAmount) == true) {
                 String selectedProduct = productList.getValue().toString();
                 int amount = Integer.parseInt(outOrderAmount.getText());
-                this.varastoService.otaVarastosta(selectedProduct, amount);
+                this.varastoService.outGoingOrder(selectedProduct, amount);
                 productList.setItems(
-                        FXCollections.observableArrayList(this.varastoService.listaTuoteNimista()));
+                        FXCollections.observableArrayList(this.varastoService.getListOfProductNames()));
                 inOrderAmount.clear();
             } else {
                 inOrderAmount.setStyle("-fx-text-fill: red;");
@@ -223,7 +223,7 @@ public class GraphicUi extends Application {
         TableView table = new TableView();
         TableColumn productColumn = new TableColumn("Product");
         productColumn.setMinWidth(150);
-        productColumn.setCellValueFactory(new PropertyValueFactory<>("nimi"));
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         
         TableColumn amountColumn = new TableColumn("Current Stock");
         amountColumn.setMinWidth(150);
@@ -240,7 +240,7 @@ public class GraphicUi extends Application {
         table.getColumns().addAll(productColumn, amountColumn, safetyColumn, differenceColum);
         
         
-        
+       
         // Edit product elements
         Label safetyLimitLabel = new Label("Safety limit");
         TextField safetyLimitTextField = new TextField();
@@ -285,7 +285,7 @@ public class GraphicUi extends Application {
         
         currentInventoryMenuItem.setOnAction(e -> {
             table.getItems().clear();
-            table.setItems(FXCollections.observableArrayList(this.varastoService.palautaTuotteet()));
+            table.setItems(FXCollections.observableArrayList(this.varastoService.getProducts()));
             layout.setCenter(table);
         });
         
@@ -310,7 +310,7 @@ public class GraphicUi extends Application {
             TableView allertTable = new TableView();
             allertTable.getItems().clear();
             allertTable.getColumns().addAll(productColumn, differenceColum, amountColumn, safetyColumn);
-            allertTable.setItems(FXCollections.observableArrayList(this.varastoService.palautaTuotteetJotkaAlleRajan()));
+            allertTable.setItems(FXCollections.observableArrayList(this.varastoService.getProductsThatAreUnderLimit()));
             layout.setCenter(allertTable);
         });
         */

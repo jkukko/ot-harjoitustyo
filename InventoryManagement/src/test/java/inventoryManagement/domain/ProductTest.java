@@ -13,18 +13,18 @@ import org.junit.Before;
  *
  * @author kukkojoo
  */
-public class TuoteTest {
+public class ProductTest {
     
-    Tuote tuote;
+    Product tuote;
     
     @Before
     public void setUp() {
-        this.tuote = new Tuote("Maito");
+        this.tuote = new Product("Maito");
     }
     
     @Test
     public void konstruktoriAsettaaTuotteelleOikeanNimen() {
-        assertEquals("Maito", this.tuote.getNimi());
+        assertEquals("Maito", this.tuote.getName());
     }
     
     @Test
@@ -34,8 +34,8 @@ public class TuoteTest {
     
     @Test
     public void tuotteenNimiVoidaanAntaa() {
-        this.tuote.setNimi("Normimaito");
-        assertEquals("Normimaito", this.tuote.getNimi());
+        this.tuote.setName("Normimaito");
+        assertEquals("Normimaito", this.tuote.getName());
     }
     
     

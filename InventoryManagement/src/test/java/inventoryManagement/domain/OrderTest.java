@@ -9,17 +9,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class TilausTest {
+public class OrderTest {
     
-    Tilaus tilaus;
+    Order tilaus;
     
     @Before
     public void setUp() {
-        this.tilaus = new Tilaus(new Tuote("Maito"), new Date(), true, 10);
+        this.tilaus = new Order(new Product("Maito"), new Date(), true, 10);
     }
     
     @Test
     public void konstruktoriAntaaTuotteelleOikeanBoolean() {
-        assertEquals(true, this.tilaus.isSisaanTuleva());
+        assertEquals(true, this.tilaus.isIsIncomingOrder());
     }
 }

@@ -1,13 +1,13 @@
 package inventoryManagement.domain;
 
-public class Tuote {
-    private String nimi;
+public class Product {
+    private String name;
     private int safetyAmmount;
     private int currentStock;
     private int difference;
     
-    public Tuote(String nimi) {
-        this.nimi = nimi;
+    public Product(String name) {
+        this.name = name;
         this.safetyAmmount = 0;
         this.currentStock = 0;
         this.difference = 0;
@@ -29,9 +29,8 @@ public class Tuote {
         this.currentStock = currentStock;
     }
 
-
-    public String getNimi() {
-        return nimi;
+    public String getName() {
+        return name;
     }
 
     public int getSafetyAmmount() {
@@ -42,13 +41,13 @@ public class Tuote {
         this.safetyAmmount = safetyAmmount;
     }
 
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return this.nimi;
+        return this.name;
     }
     
 }

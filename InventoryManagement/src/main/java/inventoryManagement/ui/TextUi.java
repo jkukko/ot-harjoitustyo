@@ -1,8 +1,8 @@
 package inventoryManagement.ui;
 
-import inventoryManagement.dao.ArrayListTilausDao;
-import inventoryManagement.dao.ArrayListTuoteDao;
-import inventoryManagement.domain.VarastoService;
+import inventoryManagement.dao.ArrayListOrderDao;
+import inventoryManagement.dao.ArrayListProductDao;
+import inventoryManagement.domain.InventoryService;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -10,13 +10,13 @@ import java.util.TreeMap;
 public class TextUi {
     
     private Scanner scanner;
-    private VarastoService varastoService;
+    private InventoryService varastoService;
     private Map<String, String> commands;
     
     
     public TextUi(Scanner scanner) {
         this.scanner = scanner; 
-        this.varastoService = new VarastoService(new ArrayListTilausDao(), new ArrayListTuoteDao());
+        this.varastoService = new InventoryService(new ArrayListOrderDao(), new ArrayListProductDao());
         this.commands = new TreeMap<>();
         
         commands.put("1", "1 Add Product");
@@ -42,11 +42,11 @@ public class TextUi {
             } else if (command.equals("3")) {
                 takeFromInventory();
             } else if (command.equals("4")) {
-                this.varastoService.tulostaKuvulaVarasto();
+                this.varastoService.printCurrentInventory();
             } else if (command.equals("5")) {
                 printOrderHistorybyProduct();
             } else if (command.equals("6")) {
-                this.varastoService.lataaHistoria();
+                this.varastoService.loadHistory();
             }
         }
     }
@@ -64,7 +64,7 @@ public class TextUi {
         String tuote = scanner.nextLine();
         System.out.print("Määrä: ");
         int luku =  Integer.parseInt(scanner.nextLine());
-        this.varastoService.kirjaaTilaus(tuote, luku);
+        this.varastoService.incomingOrder(tuote, luku);
     }
 
     private void takeFromInventory() {
@@ -72,13 +72,13 @@ public class TextUi {
         String tuote = scanner.nextLine();
         System.out.print("Määrä: ");
         int luku =  Integer.parseInt(scanner.nextLine());
-        this.varastoService.otaVarastosta(tuote, luku);
+        this.varastoService.outGoingOrder(tuote, luku);
     }
 
     private void printOrderHistorybyProduct() {
         System.out.print("Tuote: ");
         String tuote = scanner.nextLine();
-        this.varastoService.tulostaTuotteenKirjanpito(tuote);
+        this.varastoService.printProductOrders(tuote);
     }
     
     

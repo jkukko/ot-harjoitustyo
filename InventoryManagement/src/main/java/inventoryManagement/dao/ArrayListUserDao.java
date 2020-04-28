@@ -53,13 +53,10 @@ public class ArrayListUserDao implements UserDao {
     @Override
     public Boolean checkUsername(String username) {
         for (int i = 0; i < this.users.size(); i++) {
-            
             if (this.users.get(i).getUsername().equals(username)) {
                 return true;
-            }
-            
+            }            
         }
-        
         return false;
     }
     
