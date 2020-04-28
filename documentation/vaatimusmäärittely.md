@@ -9,7 +9,7 @@ Sovelluksessa on aluksi ainoastaan yhdenlaisia käyttäjiä, normaali käyttäj�
 Tarkoituksena on myös lisätä pääkäyttäjä, jolla on suuremman oikeudet.
 <h2>Perusvesion tarjoama toiminnallisuus</h2>
 <h3>Ennen kirjautumista</h3>
-<li>Käyttäjä voi luoda järjestelmään käyttäjätunnuksen. Käyttötunnusella on tietyt vaatimukset **tehty**  </li> 
+<li>Käyttäjä voi luoda järjestelmään käyttäjätunnuksen. Käyttötunnusella on tietyt vaatimukset <strong>tehty</strong>  </li> 
 <li>Käyttäjä voi kirjautua järjestelmään. Jos käyttäjää ei ole ohjelma ilmoittaa tästä, sekä ehdottaa haluaako käyttäjä luoda tunnuksen</li>
 <h3>Kirjautumisen jälkeen</h3>
 <li>Käyttäjä näkee listan tuotteista missä varastotaso on alhainen</li>
