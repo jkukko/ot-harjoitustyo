@@ -8,8 +8,10 @@ import inventoryManagement.dao.FileProductDao;
 import inventoryManagement.dao.FileUserDao;
 import inventoryManagement.domain.User;
 import inventoryManagement.domain.InventoryService;
+import java.io.FileInputStream;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -48,9 +50,16 @@ public class GraphicUi extends Application {
   
     @Override
     public void init() throws Exception {
-        FileProductDao fileProductDao = new FileProductDao("products.csv");
-        this.varastoService = new InventoryService(new FileOrderDao("orders.csv", fileProductDao), fileProductDao);
-        this.userDao = new FileUserDao("users.csv");
+        Properties properties = new Properties();
+        properties.load(new FileInputStream("config.properties"));
+        String userFile = properties.getProperty("userFile");
+        String productFile = properties.getProperty("productFile");
+        String orderFile = properties.getProperty("orderFile");
+
+        this.userDao = new FileUserDao(userFile);        
+        FileProductDao fileProductDao = new FileProductDao(productFile);
+        FileOrderDao orderDao = new FileOrderDao(orderFile, fileProductDao);
+        this.varastoService = new InventoryService(orderDao, fileProductDao);
         
         //this.varastoService.loadHistory();
     }
