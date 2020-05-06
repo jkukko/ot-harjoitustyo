@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package inventoryManagement.dao;
 
 import inventoryManagement.domain.User;
@@ -7,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ *
+ * @author kukkojoo
+ */
 public class FileUserDao implements UserDao {
     private List<User> users;
     private String file;
@@ -15,39 +24,33 @@ public class FileUserDao implements UserDao {
         this.users = new ArrayList<>();
         this.file = file;
         try {
-            Scanner reader = new Scanner(new File(file));
-            while (reader.hasNextLine()) {
-                String[] parts = reader.nextLine().split(";");
-                User u = new User(parts[0], parts[1]);
-                users.add(u);
+            Scanner scanner = new Scanner(new File(this.file));
+            while (scanner.hasNextLine()) {
+                String [] parts = scanner.nextLine().split(",");
+                User user = new User(parts[0], parts[1]);
+                users.add(user);
             }
         } catch (Exception e) {
-            FileWriter writer = new FileWriter(new File(file));
-            writer.close();
-        }   
+            System.out.println(e);
+        }
     }
-    
-    private void save() throws Exception{
-        try (FileWriter writer = new FileWriter(new File(file))) {
-            for (User user : users) {
-                writer.write(user.getUsername() + ";" + user.getPassword() + "\n");
-            }
-        } 
-    }    
 
     @Override
     public User create(User user) {
-        users.add(user);
+        this.users.add(user);
+        save();
         return user;
     }
 
     @Override
     public User findByUsername(String username) {
-        return users.stream()
-            .filter(u->u.getUsername()
-            .equals(username))
-            .findFirst()
-            .orElse(null);
+        for (int i = 0; i < this.users.size(); i++) {
+            
+            if (this.users.get(i).getUsername().equals(username)) {
+                return this.users.get(i);
+            }
+        }
+        return null;
     }
 
     @Override
@@ -56,10 +59,11 @@ public class FileUserDao implements UserDao {
     }
 
     @Override
-    public Boolean login(String username, String pw) {
+    public Boolean login(String username, String password) {
         for (int i = 0; i < this.users.size(); i++) {
+            
             if (this.users.get(i).getUsername().equals(username) &&
-                    this.users.get(i).getPassword().equals(pw)) {
+                    this.users.get(i).getPassword().equals(password)) {
                 return true;
             }
         }
@@ -71,9 +75,19 @@ public class FileUserDao implements UserDao {
         for (int i = 0; i < this.users.size(); i++) {
             if (this.users.get(i).getUsername().equals(username)) {
                 return true;
-            }            
+            }
         }
         return false;
+    }
+
+    private void save() {
+        try (FileWriter writer = new FileWriter(new File(file))) {
+            for (User user : users) {
+                writer.write(user.getUsername() + "," + user.getPassword() + "\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } 
     }
     
 }

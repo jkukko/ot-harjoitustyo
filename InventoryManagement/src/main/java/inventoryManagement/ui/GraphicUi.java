@@ -3,6 +3,9 @@ package inventoryManagement.ui;
 import inventoryManagement.dao.ArrayListOrderDao;
 import inventoryManagement.dao.ArrayListProductDao;
 import inventoryManagement.dao.ArrayListUserDao;
+import inventoryManagement.dao.FileOrderDao;
+import inventoryManagement.dao.FileProductDao;
+import inventoryManagement.dao.FileUserDao;
 import inventoryManagement.domain.User;
 import inventoryManagement.domain.InventoryService;
 import java.util.Date;
@@ -36,7 +39,7 @@ import javafx.stage.Stage;
 public class GraphicUi extends Application {
     
     private InventoryService varastoService;
-    private ArrayListUserDao userDao;
+    private FileUserDao userDao;
     
     private Scene newUserScene;
     private Scene loginScene;
@@ -44,12 +47,12 @@ public class GraphicUi extends Application {
 
   
     @Override
-    public void init() {
-        this.varastoService = new InventoryService(new ArrayListOrderDao(), new ArrayListProductDao());
-        this.userDao = new ArrayListUserDao();
+    public void init() throws Exception {
+        FileProductDao fileProductDao = new FileProductDao("products.csv");
+        this.varastoService = new InventoryService(new FileOrderDao("orders.csv", fileProductDao), fileProductDao);
+        this.userDao = new FileUserDao("users.csv");
         
-        this.userDao.create(new User("Test", "Test"));
-        this.varastoService.loadHistory();
+        //this.varastoService.loadHistory();
     }
     
     private boolean isInt(TextField input) {

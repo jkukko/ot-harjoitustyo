@@ -12,6 +12,13 @@ public class Product {
         this.currentStock = 0;
         this.difference = 0;
     }
+    
+    public Product(String name, int safetyAmount, int currentStock) {
+        this.name = name;
+        this.safetyAmmount = safetyAmount;
+        this.currentStock = currentStock;
+        this.difference = currentStock - safetyAmount;
+    }
 
     public int getDifference() {
         return difference;
