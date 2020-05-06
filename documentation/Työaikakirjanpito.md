@@ -23,4 +23,5 @@
 |Refactorointia               |      1h       |  28.4    |
 |Uutta toiminnallisuutta      |      2h       |  28.4    |
 |Dokumentointia               |      1h       |  28.4    |
-|Total                        |     35h       |  21.4    |
+|Tallennuslogiikka            |      2h       |   6.5    |
+|Total                        |     37h       |  21.4    |
