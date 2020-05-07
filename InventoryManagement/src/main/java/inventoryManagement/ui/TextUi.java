@@ -2,6 +2,7 @@ package inventoryManagement.ui;
 
 import inventoryManagement.dao.ArrayListOrderDao;
 import inventoryManagement.dao.ArrayListProductDao;
+import inventoryManagement.dao.ArrayListUserDao;
 import inventoryManagement.domain.InventoryService;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class TextUi {
     
     public TextUi(Scanner scanner) {
         this.scanner = scanner; 
-        this.varastoService = new InventoryService(new ArrayListOrderDao(), new ArrayListProductDao());
+        this.varastoService = new InventoryService(new ArrayListOrderDao(), new ArrayListProductDao(), new ArrayListUserDao());
         this.commands = new TreeMap<>();
         
         commands.put("1", "1 Add Product");

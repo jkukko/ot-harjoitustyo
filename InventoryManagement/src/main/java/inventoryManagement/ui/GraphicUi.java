@@ -41,7 +41,6 @@ import javafx.stage.Stage;
 public class GraphicUi extends Application {
     
     private InventoryService varastoService;
-    private FileUserDao userDao;
     
     private Scene newUserScene;
     private Scene loginScene;
@@ -56,10 +55,10 @@ public class GraphicUi extends Application {
         String productFile = properties.getProperty("productFile");
         String orderFile = properties.getProperty("orderFile");
 
-        this.userDao = new FileUserDao(userFile);        
-        FileProductDao fileProductDao = new FileProductDao(productFile);
-        FileOrderDao orderDao = new FileOrderDao(orderFile, fileProductDao);
-        this.varastoService = new InventoryService(orderDao, fileProductDao);
+        FileUserDao userDao = new FileUserDao(userFile);        
+        FileProductDao productDao = new FileProductDao(productFile);
+        FileOrderDao orderDao = new FileOrderDao(orderFile, productDao);
+        this.varastoService = new InventoryService(orderDao, productDao, userDao);
         
         //this.varastoService.loadHistory();
     }
@@ -107,8 +106,8 @@ public class GraphicUi extends Application {
         loginButton.setOnAction(e-> {
             String username = usernameInput.getText();
             String password = passwordInput.getText();
-            if (this.userDao.login(username, password) == true) {
-                System.out.println("Login succeed");
+            if (this.varastoService.login(username, password) == true) {
+                System.out.println("Login succeed " + username);
                 primaryStage.setScene(this.mainScene);
             } else {
                 System.out.println("Login failed");
@@ -150,9 +149,9 @@ public class GraphicUi extends Application {
         saveNewUser.setOnAction(e-> {
             String username = newUserUsernameInput.getText();
             String password = newUserPasswordInput.getText();
-            if (this.userDao.checkUsername(username) == false) {
+            if (this.varastoService.checkUsername(username) == false) {
                 System.out.println("New user created");
-                this.userDao.create(new User(username, password));
+                this.varastoService.create(username, password);
                 primaryStage.setScene(this.loginScene);
             } else {
                 System.out.println("This username is already in use");

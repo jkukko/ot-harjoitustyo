@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 import inventoryManagement.dao.ProductDao;
 import inventoryManagement.dao.OrderDao;
+import inventoryManagement.dao.UserDao;
 /**
  * 
  * This class is responsible of application logic
@@ -23,11 +24,13 @@ public class InventoryService {
     
     private OrderDao orderDao;
     private ProductDao productDao;
+    private UserDao userdao;
     private HashMap<Product, Integer> currentSituation;
     
-    public InventoryService(OrderDao tilausDao, ProductDao tuoteDao) {
+    public InventoryService(OrderDao tilausDao, ProductDao tuoteDao, UserDao userDao) {
         this.orderDao = tilausDao;
         this.productDao = tuoteDao;
+        this.userdao = userDao;
         this.currentSituation = new HashMap<>();
     }
     
@@ -261,4 +264,15 @@ public class InventoryService {
         return values;
     }
     
+    public Boolean login(String username, String password) {
+        return this.userdao.login(username, password);
+    }
+    
+    public void create(String username, String password) {
+        this.userdao.create(new User(username, password));
+    }
+    
+    public Boolean checkUsername(String username) {
+        return this.userdao.checkUsername(username);
+    }
 }
