@@ -57,11 +57,15 @@ public class GraphicUi extends Application {
     private boolean isInt(TextField input) {
         try {
             int amount = Integer.parseInt(input.getText());
+            
+            if (amount<0) {
+                return false;
+            }
             return true;
         } catch(NumberFormatException e) {
             return false;
         }
-    }        //this.varastoService.loadHistory();
+    }        
 
     
     
@@ -200,6 +204,7 @@ public class GraphicUi extends Application {
                 inOrderAmount.clear();
                 menuOptions2.getItems().clear();
                 menuOptions2.getItems().addAll(ListOfProductNames());
+                inOrderAmount.setStyle("-fx-text-fill: black;"); 
             } else {
                 inOrderAmount.setStyle("-fx-text-fill: red;");                
             }
@@ -218,9 +223,10 @@ public class GraphicUi extends Application {
                 this.varastoService.outGoingOrder(selectedProduct, amount);
                 productList.setItems(
                         FXCollections.observableArrayList(this.varastoService.getListOfProductNames()));
-                inOrderAmount.clear();
+                outOrderAmount.clear();
+                outOrderAmount.setStyle("-fx-text-fill: black;");
             } else {
-                inOrderAmount.setStyle("-fx-text-fill: red;");
+                outOrderAmount.setStyle("-fx-text-fill: red;");
                 
             }
         });

@@ -152,33 +152,7 @@ public class InventoryService {
             System.out.println(orders.get(i));
         }
     }
-    
-    public void loadHistory() {
-        
-        try (Scanner scanner = new Scanner(Paths.get("history.csv"))) {
             
-            while (scanner.hasNextLine()) {
-                String row = scanner.nextLine();
-                String[] palat = row.split(",");
-                Boolean b = Boolean.parseBoolean(palat[4]);
-                int amount = Integer.parseInt(palat[5]);
-                int year = Integer.parseInt(palat[1]) - 1900;
-                int month = Integer.parseInt(palat[2]) - 1;
-                int day = Integer.parseInt(palat[3]);
-                Date date = new Date(year, month, day);
-                if (b == true) {
-                    incomingOrderSpecificDay(palat[0], amount, date);
-                } else {
-                    outGoingOrderSpecificDay(palat[0], amount, date);
-                }
-                    
-            }
-            
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
-    }
-        
     /**
      * Return all Product names as a list
      * @return List of product names as string List

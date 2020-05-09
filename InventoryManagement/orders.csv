@@ -11,3 +11,7 @@
 10,Product E,2020-05-10,true,5
 11,Product A,2020-05-10,false,10
 12,Product A,2020-05-10,true,20
+13,Product A,2020-05-10,true,-10
+14,Product A,2020-05-10,false,10
+15,Product B,2020-05-10,false,5
+16,Product A,2020-05-10,true,20

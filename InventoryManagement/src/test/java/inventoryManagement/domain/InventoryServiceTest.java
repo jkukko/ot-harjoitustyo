@@ -64,4 +64,12 @@ public class InventoryServiceTest {
         assertEquals(true, this.varastoService.login("test", "test"));
     }
     
+    @Test
+    public void changeSafetyStockLimit() {
+        this.varastoService.incomingOrder("Maito", 10);
+        this.varastoService.changeSafetyStock("Maito", 10);
+        assertEquals(10, this.varastoService.getSafetyStockLimit("Maito"));
+    }
+    
+    
 }
