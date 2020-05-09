@@ -35,7 +35,7 @@ public class InventoryService {
         this.userdao = userDao;
         this.currentSituation = new HashMap<>();
         this.format = new SimpleDateFormat("yyyy-MM-dd");
-        this.id = this.orderDao.lstId();
+        this.id = this.orderDao.lstId() + 1;
         
     }
     
@@ -236,24 +236,7 @@ public class InventoryService {
     public void changeSafetyStock(String name, int amount) {
         this.productDao.changeSafetyLimit(name, amount);
     }
-/*    
-    public ObservableList<XYChart.Data<Date, Integer>> dataForVisualisation(String name) {
-        List<Order> orders = this.orderDao.findByTuoteName(name);
-        ObservableList<XYChart.Data<Date, Integer>> values = FXCollections.observableArrayList();
-        
-        for (int i = 0; i < orders.size(); i++) {
-            Order t = orders.get(i);
-            
-            if (t.isIsIncomingOrder() == true) {
-                values.add(new XYChart.Data<Date, Integer>(t.getDate(), t.getAmount()));
-            }
-            
-        }
-        
-        return values;
-    }
-*/    
-    
+  
     public void visualizeOrder(String productName) {
         System.out.println(productName);
         List<Order> orders = this.orderDao.findByTuoteName(productName);

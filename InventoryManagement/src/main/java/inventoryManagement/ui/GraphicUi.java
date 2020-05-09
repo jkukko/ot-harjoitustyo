@@ -171,16 +171,14 @@ public class GraphicUi extends Application {
         MenuItem incomingOrderMenuItem = new MenuItem("Incoming Order");
         MenuItem currentInventoryMenuItem = new MenuItem("Current Inventory");
         MenuItem takeFromInventoryMenuItem = new MenuItem("Take from stock");
-        MenuItem logOutMenuItem = new MenuItem("Logout");
+        MenuItem closeMenuItem = new MenuItem("Close Inventory Management");
         MenuItem editProductMenuItem = new MenuItem("Edit Product");
-        MenuItem allertMenuItem = new MenuItem("Allert monitor");
         menuOptions.getItems().addAll(
                 currentInventoryMenuItem,
                 incomingOrderMenuItem, 
                 takeFromInventoryMenuItem, 
                 editProductMenuItem,
-                allertMenuItem,
-                logOutMenuItem);
+                closeMenuItem);
         menuBar.getMenus().addAll(menuOptions, menuOptions2);
         
         // Create layout
@@ -317,22 +315,8 @@ public class GraphicUi extends Application {
 
 
         });
-        /*
-        allertMenuItem.setOnAction(e -> {
-            TableView allertTable = new TableView();
-            allertTable.getItems().clear();
-            allertTable.getColumns().addAll(productColumn, differenceColum, amountColumn, safetyColumn);
-            allertTable.setItems(FXCollections.observableArrayList(this.varastoService.getProductsThatAreUnderLimit()));
-            layout.setCenter(allertTable);
-        });
-        */
         
-        logOutMenuItem.setOnAction(e -> {
-            grid.getChildren().clear();
-            grid.add(productList, 0, 0);
-            this.varastoService.printProductOrders("Product A");
-            layout.setLeft(grid);
-        });
+        closeMenuItem.setOnAction(e -> closeProgram(primaryStage));
         
         menuOptions2.setOnAction(e -> {
             grid.getChildren().clear();
@@ -344,6 +328,8 @@ public class GraphicUi extends Application {
         });
 
         this.mainScene = new Scene(layout, 620, 300);
+        
+        primaryStage.setOnCloseRequest(e -> closeProgram(primaryStage));
         
         // setup primary stage
         setUserAgentStylesheet(STYLESHEET_CASPIAN);
@@ -365,6 +351,11 @@ public class GraphicUi extends Application {
             productMenuItems.add(item);
         }
         return productMenuItems;
+    }
+
+    private void closeProgram(Stage stage) {
+        System.out.println("Program is closed");
+        stage.close();
     }
    
     
