@@ -1,6 +1,5 @@
 package inventoryManagement.domain;
 
-import java.io.File;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class InventoryService {
     private OrderDao orderDao;
     private ProductDao productDao;
     private UserDao userdao;
-    private HashMap<Product, Integer> currentSituation;
     private SimpleDateFormat format;
     private int id;
     
@@ -33,7 +31,6 @@ public class InventoryService {
         this.orderDao = tilausDao;
         this.productDao = tuoteDao;
         this.userdao = userDao;
-        this.currentSituation = new HashMap<>();
         this.format = new SimpleDateFormat("yyyy-MM-dd");
         this.id = this.orderDao.lstId() + 1;
         
@@ -64,7 +61,7 @@ public class InventoryService {
      * @param name product name
      * @param amount amount of product in order
      * @param date specific registration date
-     * @return 
+     * @return  order
      */
     
     private Order incomingOrderSpecificDay(String name, int amount, Date date) {
@@ -142,18 +139,6 @@ public class InventoryService {
         return amount;           
     }    
     
-    /**
-     * Print current inventory: product name and amount
-     */
-    
-    public void printCurrentInventory() {
-        for (Map.Entry<Product, Integer> entry : currentSituation.entrySet()) {
-            Product key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key + " " + value);
-            
-        }
-    }
     
     /**
      * Print orders of specific product
@@ -193,28 +178,11 @@ public class InventoryService {
             System.out.println("Error: " + e);
         }
     }
-    
-    
-    public int getCountOfProductsInInventory() {
-        return this.productDao.getAll().size();
-    }
-    
-    public List<Product> getProductsThatAreUnderLimit() {
-        List<Product> list = new ArrayList<>();
-        List<Product> products = this.productDao.getAll();
-        for (int i = 0; i < products.size(); i++) {
-            
-            if (products.get(i).getDifference() <= 0) {
-                list.add(products.get(i));
-            }
-            
-        }
-        return list;
-    }
-
-    public HashMap<Product, Integer> getCurrentSituation() {
-        return currentSituation;
-    }
+        
+    /**
+     * Return all Product names as a list
+     * @return List of product names as string List
+     */
     
     public List<String> getListOfProductNames() {
         List<String> productNames = new ArrayList<>();
@@ -224,14 +192,31 @@ public class InventoryService {
         }
         return productNames;
     }
+
+    /**
+     * Return all Products that are saved
+     * @return List of products
+     */
     
     public List<Product> getProducts() {
         return this.productDao.getAll();
     }
     
+    /**
+     * Return specific current safety stock level
+     * @param name   Product name
+     * @return current safety stock level
+     */
+    
     public int getSafetyStockLimit(String name) {
         return this.productDao.getSafetyStoct(name);
     }
+    
+    /**
+     * Change specific safety stock level
+     * @param name  Product name
+     * @param amount  new safety stock level
+     */
     
     public void changeSafetyStock(String name, int amount) {
         this.productDao.changeSafetyLimit(name, amount);
@@ -245,13 +230,32 @@ public class InventoryService {
         }
     }
     
+    /**
+     * Login into Inventory Management by using specific username and password
+     * @param username usersname
+     * @param password password
+     * @return if username and password are allready create, then returns true else false
+     */
+    
     public Boolean login(String username, String password) {
         return this.userdao.login(username, password);
     }
     
+    /**
+     * Create new user
+     * @param username  username
+     * @param password  password
+     */
+    
     public void create(String username, String password) {
         this.userdao.create(new User(username, password));
     }
+    
+    /**
+     * 
+     * @param username  username
+     * @return if this username is already save to system then returns true else false
+     */
     
     public Boolean checkUsername(String username) {
         return this.userdao.checkUsername(username);

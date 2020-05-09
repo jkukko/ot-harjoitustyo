@@ -259,7 +259,6 @@ public class GraphicUi extends Application {
             this.varastoService.changeSafetyStock(selectedProduct, amount);
         });
         
-        // HaTableView allertTable = new TableView();ndling menu events
         incomingOrderMenuItem.setOnAction(e -> {
             grid.getChildren().clear();       
             grid.add(productLabel, 0, 0);

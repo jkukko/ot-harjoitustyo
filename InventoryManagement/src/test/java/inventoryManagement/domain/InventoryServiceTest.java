@@ -1,8 +1,6 @@
 package inventoryManagement.domain;
 
-import inventoryManagement.dao.FileOrderDao;
-import inventoryManagement.dao.FileProductDao;
-import inventoryManagement.dao.FileUserDao;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -19,9 +17,9 @@ public class InventoryServiceTest {
     
     @Before
     public void setUp() {
-        FileProductDao productDao = new FileProductDao("products.csv");
-        FileUserDao userDao = new FileUserDao("users.csv");
-        FileOrderDao orderDao = new FileOrderDao("orders.csv", productDao);
+        FakeProductDao productDao = new FakeProductDao();
+        FakeUserDao userDao = new FakeUserDao();
+        FakeOrderDao orderDao = new FakeOrderDao();
         
         this.varastoService = new InventoryService(orderDao, productDao, userDao);
     }
@@ -29,14 +27,9 @@ public class InventoryServiceTest {
     @Test
     public void varastoonVoiKirjataTuotteita() {
         this.varastoService.incomingOrder("Maito", 10);
-        assertEquals(1, this.varastoService.getCountOfProductsInInventory());
+        assertEquals(1, this.varastoService.getProducts().size());
     }
-    
-    @Test
-    public void lataaHistoriaOikeastiLataaHistorian() {
-        this.varastoService.loadHistory();
-        assertEquals(2, this.varastoService.getCountOfProductsInInventory());
-    }
+
     
     @Test
     public void otaVarastotaMaaraMikaSiellaOn() {
@@ -54,16 +47,21 @@ public class InventoryServiceTest {
         this.varastoService.incomingOrder("Banaani", 5);
         this.varastoService.incomingOrder("Maito", 3);
         List<String> lista = new ArrayList<>();
-        lista.add("Maito");
         lista.add("Banaani");
+        lista.add("Maito");
         assertEquals(lista, this.varastoService.getListOfProductNames());
     }
     
     @Test
-    public void palauttaaTuotteetJotkaAlleRajan() {
-        this.varastoService.incomingOrder("Maito", 5);
-        this.varastoService.changeSafetyStock("Maito", 10);
-
-        assertEquals(1, this.varastoService.getProductsThatAreUnderLimit().size());
+    public void createNewUser() {
+        this.varastoService.create("test", "test");
+        assertEquals(true, this.varastoService.checkUsername("test"));
     }
+    
+    @Test
+    public void loginWorks() {
+        this.varastoService.create("test", "test");
+        assertEquals(true, this.varastoService.login("test", "test"));
+    }
+    
 }

@@ -9,12 +9,8 @@ import inventoryManagement.domain.Order;
 import inventoryManagement.domain.Product;
 import java.io.File;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 /**
