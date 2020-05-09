@@ -10,9 +10,11 @@ import inventoryManagement.domain.Product;
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -32,11 +34,12 @@ public class FileOrderDao implements OrderDao {
             Scanner scanner = new Scanner(new File(this.file));
             while (scanner.hasNextLine()) {
                 String[] parts = scanner.nextLine().split(",");
-                Product product = this.fileProductDao.findByName(parts[0]);
-                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(parts[1]);
-                Boolean b = Boolean.parseBoolean(parts[2]);
-                int amount = Integer.parseInt(parts[3]);
-                Order order = new Order(product, date, b, amount);
+                Product product = this.fileProductDao.findByName(parts[1]);
+                Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(parts[2]);
+                Boolean b = Boolean.parseBoolean(parts[3]);
+                int amount = Integer.parseInt(parts[4]);
+                int id = Integer.parseInt(parts[0]);
+                Order order = new Order(id, product, date, b, amount);
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -52,7 +55,14 @@ public class FileOrderDao implements OrderDao {
 
     @Override
     public List<Order> findByTuoteName(String name) {
-        return this.orders;
+        List<Order> ordersByProductName = new ArrayList<>();
+        for (int i = 0; i < this.orders.size(); i++) {
+            
+            if (this.orders.get(i).getProduct().getName().equals(name)) {
+                ordersByProductName.add(this.orders.get(i));
+            }
+        }
+        return ordersByProductName;
     }
 
     @Override
@@ -64,6 +74,7 @@ public class FileOrderDao implements OrderDao {
         try (FileWriter writer = new FileWriter(new File(this.file))) {
             for (Order order : this.orders) {
                 writer.write(
+                        order.getId() + "," +
                         order.getProduct().getName() + "," + 
                         order.getDate() + "," +
                         order.isIsIncomingOrder() + "," +
@@ -73,6 +84,15 @@ public class FileOrderDao implements OrderDao {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    @Override
+    public int lstId() {
+        if (this.orders.size()==0) {
+            return 0;
+        }
+        int id = this.orders.get(this.orders.size()-1).getId();
+        return id;
     }
     
 }

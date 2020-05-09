@@ -26,12 +26,17 @@ public class InventoryService {
     private ProductDao productDao;
     private UserDao userdao;
     private HashMap<Product, Integer> currentSituation;
+    private SimpleDateFormat format;
+    private int id;
     
     public InventoryService(OrderDao tilausDao, ProductDao tuoteDao, UserDao userDao) {
         this.orderDao = tilausDao;
         this.productDao = tuoteDao;
         this.userdao = userDao;
         this.currentSituation = new HashMap<>();
+        this.format = new SimpleDateFormat("yyyy-MM-dd");
+        this.id = this.orderDao.lstId();
+        
     }
     
     /**
@@ -46,19 +51,12 @@ public class InventoryService {
         if (this.productDao.findByName(name) == null) {
             this.productDao.create(new Product(name));
         }
-        
         Product product = this.productDao.findByName(name);
-        
-        if (this.currentSituation.containsKey(product)) {
-            int currentAmount = this.currentSituation.get(product);
-            this.currentSituation.put(product, currentAmount + amount);
-            this.productDao.changeCurrentStock(name, currentAmount + amount);
-        } else {
-            this.currentSituation.put(product, amount);
-            this.productDao.changeCurrentStock(name, amount);
-        }
-        
-        return orderDao.create(new Order(product, date, true, amount));
+        int currentAmount = product.getCurrentStock();
+        this.productDao.changeCurrentStock(name, currentAmount + amount);
+        Order order = orderDao.create(new Order(this.id, product, date, true, amount));
+        this.id++;
+        return order;
     }
     
     /**
@@ -74,19 +72,12 @@ public class InventoryService {
         if (this.productDao.findByName(name) == null) {
             this.productDao.create(new Product(name));
         }
-        
         Product product = this.productDao.findByName(name);
-        
-        if (this.currentSituation.containsKey(product)) {
-            int currentAmount = this.currentSituation.get(product);
-            this.currentSituation.put(product, currentAmount + amount);
-            this.productDao.changeCurrentStock(name, currentAmount + amount);
-        } else {
-            this.currentSituation.put(product, amount);
-            this.productDao.changeCurrentStock(name, amount);
-        }
-        
-        return orderDao.create(new Order(product, specificDay, true, amount));
+        int currentAmount = product.getCurrentStock();
+        this.productDao.changeCurrentStock(name, currentAmount+ amount);
+        Order order = orderDao.create(new Order(this.id, product, specificDay, true, amount));
+        this.id++;
+        return order;
     }
 
     /**
@@ -104,17 +95,19 @@ public class InventoryService {
         }
         
         Product product = this.productDao.findByName(name);
-        int currentAmount = this.currentSituation.get(product);
+        int currentAmount = product.getCurrentStock();
         if (currentAmount < amount) {
-            Order ulosMenevaTilaus = new Order(product, date, false, currentAmount);
-            orderDao.create(ulosMenevaTilaus);
-            this.currentSituation.put(product, 0);
+            Order ulosMenevaTilaus = new Order(this.id, product, date, false, currentAmount);
+            this.orderDao.create(ulosMenevaTilaus);
+            this.id++;
+            this.productDao.changeCurrentStock(name, 0);
             this.productDao.changeCurrentStock(name, 0);
             return currentAmount;
         }
-        Order order = new Order(product, date, false, amount);
+        Order order = new Order(this.id, product, date, false, amount);
         orderDao.create(order);
-        this.currentSituation.put(product, currentAmount - amount);
+        this.id++;
+        this.productDao.changeCurrentStock(name, currentAmount - amount);
         this.productDao.changeCurrentStock(name, currentAmount - amount);
         return amount;
            
@@ -130,26 +123,23 @@ public class InventoryService {
     
     public int outGoingOrderSpecificDay(String name, int amount, Date date) {
         Date specificDay = date;
-        
         if (this.productDao.findByName(name) == null) {
             return 0;
         }
-        
         Product product = this.productDao.findByName(name);
-        int currentAmount = this.currentSituation.get(product);
+        int currentAmount = product.getCurrentStock();
         if (currentAmount < amount) {
-            Order order = new Order(product, specificDay, false, currentAmount);
+            Order order = new Order(this.id, product, specificDay, false, currentAmount);
             orderDao.create(order);
-            this.currentSituation.put(product, 0);
+            this.id++;
             this.productDao.changeCurrentStock(name, 0);
             return currentAmount;
         }
-        Order order = new Order(product, specificDay, false, amount);
+        Order order = new Order(this.id, product, specificDay, false, amount);
         orderDao.create(order);
-        this.currentSituation.put(product, currentAmount - amount);
+        this.id++;
         this.productDao.changeCurrentStock(name, currentAmount - amount);
-        return amount;
-           
+        return amount;           
     }    
     
     /**
@@ -171,7 +161,8 @@ public class InventoryService {
      */
     
     public void printProductOrders(String name) {
-        List<Order> orders = this.orderDao.findByTuoteName(name);
+        List<Order> orders = new ArrayList<>();
+        orders = this.orderDao.findByTuoteName(name);
         for (int i = 0; i < orders.size(); i++) {
             System.out.println(orders.get(i));
         }
@@ -226,14 +217,12 @@ public class InventoryService {
     }
     
     public List<String> getListOfProductNames() {
-        List<String> product = new ArrayList<>();
-        
-        for (Map.Entry<Product, Integer> entry : currentSituation.entrySet()) {
-            Product key = entry.getKey();
-            product.add(key.getName());
+        List<String> productNames = new ArrayList<>();
+        List<Product> products = this.productDao.getAll();
+        for (Product product : products) {
+            productNames.add(product.getName());
         }
-        
-        return product;
+        return productNames;
     }
     
     public List<Product> getProducts() {
@@ -262,6 +251,15 @@ public class InventoryService {
         }
         
         return values;
+    }
+    
+    
+    public void visualizeOrder(String productName) {
+        System.out.println(productName);
+        List<Order> orders = this.orderDao.findByTuoteName(productName);
+        for (int i = 0; i < orders.size(); i++) {
+            System.out.println(orders.get(i).toString());
+        }
     }
     
     public Boolean login(String username, String password) {

@@ -11,4 +11,6 @@ public interface OrderDao {
     
     List<Order> getAll();
     
+    int lstId();
+    
 }

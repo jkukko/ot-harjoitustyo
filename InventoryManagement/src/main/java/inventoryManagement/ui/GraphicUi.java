@@ -9,6 +9,7 @@ import inventoryManagement.dao.FileUserDao;
 import inventoryManagement.domain.User;
 import inventoryManagement.domain.InventoryService;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -16,6 +17,7 @@ import java.util.Properties;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -32,6 +34,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -60,7 +63,6 @@ public class GraphicUi extends Application {
         FileOrderDao orderDao = new FileOrderDao(orderFile, productDao);
         this.varastoService = new InventoryService(orderDao, productDao, userDao);
         
-        //this.varastoService.loadHistory();
     }
     
     private boolean isInt(TextField input) {
@@ -70,7 +72,8 @@ public class GraphicUi extends Application {
         } catch(NumberFormatException e) {
             return false;
         }
-    }
+    }        //this.varastoService.loadHistory();
+
     
     
     @Override
@@ -163,21 +166,23 @@ public class GraphicUi extends Application {
         // Create menu
         MenuBar menuBar = new MenuBar();
         Menu menuOptions = new Menu("_Options");
+        Menu menuOptions2 = new Menu("_History View");
+        menuOptions2.getItems().addAll(ListOfProductNames());
         MenuItem incomingOrderMenuItem = new MenuItem("Incoming Order");
         MenuItem currentInventoryMenuItem = new MenuItem("Current Inventory");
         MenuItem takeFromInventoryMenuItem = new MenuItem("Take from stock");
-        MenuItem historyMenuItem = new MenuItem("History View");
+        MenuItem logOutMenuItem = new MenuItem("Logout");
         MenuItem editProductMenuItem = new MenuItem("Edit Product");
         MenuItem allertMenuItem = new MenuItem("Allert monitor");
         menuOptions.getItems().addAll(
-                takeFromInventoryMenuItem, 
-                incomingOrderMenuItem, 
                 currentInventoryMenuItem,
-                historyMenuItem,
+                incomingOrderMenuItem, 
+                takeFromInventoryMenuItem, 
                 editProductMenuItem,
-                allertMenuItem);
-        menuBar.getMenus().addAll(menuOptions);
-             
+                allertMenuItem,
+                logOutMenuItem);
+        menuBar.getMenus().addAll(menuOptions, menuOptions2);
+        
         // Create layout
         BorderPane layout = new BorderPane();
         layout.setTop(menuBar);
@@ -197,6 +202,7 @@ public class GraphicUi extends Application {
                 
         Button inOrderButton = new Button("Save");
         
+        
         inOrderButton.setOnAction(e -> {
             if (isInt(inOrderAmount) == true) {
                 String selectedProduct = productList.getValue().toString();
@@ -205,6 +211,8 @@ public class GraphicUi extends Application {
                 productList.setItems(
                         FXCollections.observableArrayList(this.varastoService.getListOfProductNames()));
                 inOrderAmount.clear();
+                menuOptions2.getItems().clear();
+                menuOptions2.getItems().addAll(ListOfProductNames());
             } else {
                 inOrderAmount.setStyle("-fx-text-fill: red;");                
             }
@@ -255,15 +263,8 @@ public class GraphicUi extends Application {
         // Edit product elements
         Label safetyLimitLabel = new Label("Safety limit");
         TextField safetyLimitTextField = new TextField();
-             
-        
         Button editProductButton = new Button("Save");
         
-        // History view elements
-        ObservableList<XYChart.Series<Date, Integer>> series = FXCollections.observableArrayList();
-        ObservableList<XYChart.Data<Date, Integer>> data1 = FXCollections.observableArrayList(this.varastoService.dataForVisualisation("Maito"));
-        series.add(new XYChart.Series<>("Series1", data1));
-        NumberAxis yAxis = new NumberAxis();
         
         editProductButton.setOnAction(e-> {
             String selectedProduct = productList.getValue().toString();
@@ -273,7 +274,7 @@ public class GraphicUi extends Application {
         
         // HaTableView allertTable = new TableView();ndling menu events
         incomingOrderMenuItem.setOnAction(e -> {
-            grid.getChildren().clear();
+            grid.getChildren().clear();       
             grid.add(productLabel, 0, 0);
             grid.add(amountLabel, 1, 0);            
             grid.add(productList, 0, 1);
@@ -326,8 +327,20 @@ public class GraphicUi extends Application {
         });
         */
         
-        historyMenuItem.setOnAction(e -> {
-            
+        logOutMenuItem.setOnAction(e -> {
+            grid.getChildren().clear();
+            grid.add(productList, 0, 0);
+            this.varastoService.printProductOrders("Product A");
+            layout.setLeft(grid);
+        });
+        
+        menuOptions2.setOnAction(e -> {
+            grid.getChildren().clear();
+            MenuItem target = (MenuItem) e.getTarget();
+            String productName = target.getText();
+            this.varastoService.printProductOrders(productName);
+            grid.add(new Label(productName), 0, 0);
+            layout.setCenter(grid);
         });
 
         this.mainScene = new Scene(layout, 620, 300);
@@ -342,6 +355,16 @@ public class GraphicUi extends Application {
     
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private List<MenuItem> ListOfProductNames() {
+        List<String> products = this.varastoService.getListOfProductNames();
+        List<MenuItem> productMenuItems = new ArrayList<>();
+        for (int i = 0; i < products.size(); i++) {
+            MenuItem item = new MenuItem(products.get(i));
+            productMenuItems.add(item);
+        }
+        return productMenuItems;
     }
    
     

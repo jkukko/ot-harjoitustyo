@@ -4,16 +4,22 @@ import java.util.Date;
 
 
 public class Order {
+    private int id;
     private Product product;
     private Date date;
     private boolean isIncomingOrder;
     private Integer amount;
     
-    public Order(Product product, Date date, boolean isIncomingOrder, int amount) {
+    public Order(int id, Product product, Date date, boolean isIncomingOrder, int amount) {
+        this.id = id;
         this.product = product;
         this.date = date;
         this.isIncomingOrder = isIncomingOrder;
         this.amount = amount;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Product getProduct() {

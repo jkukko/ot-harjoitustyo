@@ -33,5 +33,10 @@ public class ArrayListOrderDao implements OrderDao {
     public List<Order> getAll() {
         return this.orders;
     }
+
+    @Override
+    public int lstId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
