@@ -54,7 +54,7 @@ public class InventoryService {
         Product product = this.productDao.findByName(name);
         int currentAmount = product.getCurrentStock();
         this.productDao.changeCurrentStock(name, currentAmount + amount);
-        Order order = orderDao.create(new Order(this.id, product, date, true, amount));
+        Order order = orderDao.create(new Order(this.id, product, format.format(date), true, amount));
         this.id++;
         return order;
     }
@@ -75,7 +75,7 @@ public class InventoryService {
         Product product = this.productDao.findByName(name);
         int currentAmount = product.getCurrentStock();
         this.productDao.changeCurrentStock(name, currentAmount+ amount);
-        Order order = orderDao.create(new Order(this.id, product, specificDay, true, amount));
+        Order order = orderDao.create(new Order(this.id, product, format.format(specificDay), true, amount));
         this.id++;
         return order;
     }
@@ -97,14 +97,14 @@ public class InventoryService {
         Product product = this.productDao.findByName(name);
         int currentAmount = product.getCurrentStock();
         if (currentAmount < amount) {
-            Order ulosMenevaTilaus = new Order(this.id, product, date, false, currentAmount);
+            Order ulosMenevaTilaus = new Order(this.id, product, this.format.format(date), false, currentAmount);
             this.orderDao.create(ulosMenevaTilaus);
             this.id++;
             this.productDao.changeCurrentStock(name, 0);
             this.productDao.changeCurrentStock(name, 0);
             return currentAmount;
         }
-        Order order = new Order(this.id, product, date, false, amount);
+        Order order = new Order(this.id, product, this.format.format(date), false, amount);
         orderDao.create(order);
         this.id++;
         this.productDao.changeCurrentStock(name, currentAmount - amount);
@@ -129,13 +129,13 @@ public class InventoryService {
         Product product = this.productDao.findByName(name);
         int currentAmount = product.getCurrentStock();
         if (currentAmount < amount) {
-            Order order = new Order(this.id, product, specificDay, false, currentAmount);
+            Order order = new Order(this.id, product, this.format.format(specificDay), false, currentAmount);
             orderDao.create(order);
             this.id++;
             this.productDao.changeCurrentStock(name, 0);
             return currentAmount;
         }
-        Order order = new Order(this.id, product, specificDay, false, amount);
+        Order order = new Order(this.id, product, this.format.format(specificDay), false, amount);
         orderDao.create(order);
         this.id++;
         this.productDao.changeCurrentStock(name, currentAmount - amount);
@@ -236,7 +236,7 @@ public class InventoryService {
     public void changeSafetyStock(String name, int amount) {
         this.productDao.changeSafetyLimit(name, amount);
     }
-    
+/*    
     public ObservableList<XYChart.Data<Date, Integer>> dataForVisualisation(String name) {
         List<Order> orders = this.orderDao.findByTuoteName(name);
         ObservableList<XYChart.Data<Date, Integer>> values = FXCollections.observableArrayList();
@@ -252,7 +252,7 @@ public class InventoryService {
         
         return values;
     }
-    
+*/    
     
     public void visualizeOrder(String productName) {
         System.out.println(productName);

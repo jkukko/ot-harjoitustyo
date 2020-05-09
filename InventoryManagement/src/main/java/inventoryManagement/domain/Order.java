@@ -6,11 +6,11 @@ import java.util.Date;
 public class Order {
     private int id;
     private Product product;
-    private Date date;
+    private String date;
     private boolean isIncomingOrder;
     private Integer amount;
     
-    public Order(int id, Product product, Date date, boolean isIncomingOrder, int amount) {
+    public Order(int id, Product product, String date, boolean isIncomingOrder, int amount) {
         this.id = id;
         this.product = product;
         this.date = date;
@@ -26,7 +26,7 @@ public class Order {
         return product;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -42,7 +42,7 @@ public class Order {
         this.product = product;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

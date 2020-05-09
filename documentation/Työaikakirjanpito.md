@@ -25,4 +25,5 @@
 |Dokumentointia               |      1h       |  28.4    |
 |Tallennuslogiikka            |      2h       |   6.5    |
 |Refaktoirointia              |      1h       |   7.5    |
-|Total                        |     38h       |   7.5    |
+|Order-logiikka päivitys      |      2h       |   8.5    |
+|Total                        |     40h       |   8.5    |

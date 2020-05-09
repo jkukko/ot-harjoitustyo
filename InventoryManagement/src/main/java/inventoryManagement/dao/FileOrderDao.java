@@ -35,11 +35,12 @@ public class FileOrderDao implements OrderDao {
             while (scanner.hasNextLine()) {
                 String[] parts = scanner.nextLine().split(",");
                 Product product = this.fileProductDao.findByName(parts[1]);
-                Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(parts[2]);
+                String date = parts[2];
                 Boolean b = Boolean.parseBoolean(parts[3]);
                 int amount = Integer.parseInt(parts[4]);
                 int id = Integer.parseInt(parts[0]);
                 Order order = new Order(id, product, date, b, amount);
+                this.orders.add(order);
             }
         } catch (Exception e) {
             System.out.println(e);
