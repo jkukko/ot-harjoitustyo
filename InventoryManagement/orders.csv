@@ -3,3 +3,7 @@
 2,Product B,2020-05-09,false,5
 3,Product A,2020-05-10,true,20
 4,Product C,2020-05-10,true,15
+5,Product D,2020-05-10,true,100
+6,Product D,2020-05-10,false,50
+7,Product A,2020-05-10,false,10
+8,Product A,2020-05-10,false,10

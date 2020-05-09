@@ -20,7 +20,7 @@ public class FileUserDao implements UserDao {
     private List<User> users;
     private String file;
     
-    public FileUserDao(String file) throws Exception {
+    public FileUserDao(String file) {
         this.users = new ArrayList<>();
         this.file = file;
         try {

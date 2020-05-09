@@ -1,28 +1,19 @@
 package inventoryManagement.ui;
 
-import inventoryManagement.dao.ArrayListOrderDao;
-import inventoryManagement.dao.ArrayListProductDao;
-import inventoryManagement.dao.ArrayListUserDao;
 import inventoryManagement.dao.FileOrderDao;
 import inventoryManagement.dao.FileProductDao;
 import inventoryManagement.dao.FileUserDao;
-import inventoryManagement.domain.User;
 import inventoryManagement.domain.InventoryService;
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -34,10 +25,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 

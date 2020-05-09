@@ -15,7 +15,7 @@ public class OrderTest {
     
     @Before
     public void setUp() {
-        this.tilaus = new Order(new Product("Maito"), new Date(), true, 10);
+        this.tilaus = new Order(0, new Product("Maito"), "01-01-2020", true, 10);
     }
     
     @Test

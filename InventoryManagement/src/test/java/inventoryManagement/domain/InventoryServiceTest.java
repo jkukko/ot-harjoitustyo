@@ -1,7 +1,8 @@
 package inventoryManagement.domain;
 
-import inventoryManagement.dao.ArrayListOrderDao;
-import inventoryManagement.dao.ArrayListProductDao;
+import inventoryManagement.dao.FileOrderDao;
+import inventoryManagement.dao.FileProductDao;
+import inventoryManagement.dao.FileUserDao;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -18,7 +19,11 @@ public class InventoryServiceTest {
     
     @Before
     public void setUp() {
-        this.varastoService = new InventoryService(new ArrayListOrderDao(), new ArrayListProductDao());
+        FileProductDao productDao = new FileProductDao("products.csv");
+        FileUserDao userDao = new FileUserDao("users.csv");
+        FileOrderDao orderDao = new FileOrderDao("orders.csv", productDao);
+        
+        this.varastoService = new InventoryService(orderDao, productDao, userDao);
     }
     
     @Test
