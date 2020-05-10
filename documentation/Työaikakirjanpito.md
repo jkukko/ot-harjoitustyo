@@ -25,7 +25,8 @@
 |Dokumentointia               |      1h       |  28.4    |
 |Tallennuslogiikka            |      2h       |   6.5    |
 |Refaktoirointia              |      1h       |   7.5    |
-|Order-logiikka päivitys      |      2h       |   8.5    |
+|Order-logiikka päivitys      |      3h       |   8.5    |
 |Testauksen kehittäminen      |      2h       |   9.5    |
 |Dokumentaation päivitys      |      1h       |   9.5    |
-|Total                        |     43h       |   8.5    |
+|Historian tarkastaminen      |      1h       |   10.5   |
+|Total                        |     45h       |   10.5   |
