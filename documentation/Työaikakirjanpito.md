@@ -31,4 +31,5 @@
 |Historian tarkastaminen      |      1h       |   10.5   |
 |Arkkitehtuurikuvaus          |      1h       |   10.5   |
 |Testaus DAO-luokille         |      2h       |   10.5   |
-|Total                        |     46h       |   10.5   |
+|Dokumenttien viimeistely     |      1h       |   10.5.  |
+|Total                        |     48h       |   10.5   |
