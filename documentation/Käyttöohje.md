@@ -37,4 +37,10 @@ Uuden käyttäjän luominen onnistuu syöttämällä käyttäjätunnus ja salasa
 
 Valitse option valikosta "Incoming order". Tämän jälkeen voitko valita nykyisen tuotteen, tai kirjoittaa uuden tuote nimen. Tämän lisäksi syötetään haluttu määrä. Kun nämä on syötetty voidaan painaa "save", mikä tallentaa tilauksent.
 
-<img src="" width=400>
+<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-5.png" width=400>
+
+<h2>Nykyisen varastotilanteen tarkastaminen</h2>
+
+Valitse option valikosta "Current inventory". Tämä tuo esiin taulun, mistä näkyy nykyisen varastotilanteen. Taulussa on tuotteen nimi, määrä, varmuusvarastonlimitti, sekä tämän ja nykyisen varastoarvon erostus.
+
+<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-4.png" width=400>
