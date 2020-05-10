@@ -58,3 +58,8 @@ Valitse option valikosta "Edit Product". Valitse alasvetovalikosta haluttu tuote
 
 <img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-7.png" width=400>
 
+<h2>Tuotteen varastohistorian tarkastaminen</h>
+
+Valitse history viewn alta haluttu tuote. Huom, tämä vaatii sen, että edes yksi tuote on lisätty varastoon. Tämän jälkeen käyttäjä näkee kyseisen tuotteen tilaushistorian.
+
+<img src="" width=400>
