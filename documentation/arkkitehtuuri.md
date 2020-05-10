@@ -18,8 +18,10 @@ Pääsääntöisesti sovelluslogiikka on pyritty erittämään täysin käyttöl
 
 
 <h2>Sovelluslogiikka</h2>
+
 Sovelluksen loogisen datamallin muodostavat Product ja Order. User-luokaa käytetään tällä hetkellä ainoastaan kirjautumiseen. 
 Toiminnalisuudesta vastaa InventoryService luokka. Sen metodeja ovat
+
 <li>Order incomingOrder(String name, int amount)</li>
 <li>Order OutGoingOrder(String name, int amount)</li>
 <li>List<String> getListOfProductNames()</li>
@@ -30,6 +32,44 @@ Toiminnalisuudesta vastaa InventoryService luokka. Sen metodeja ovat
 <li>void create(String username, String password)</li>
 <li>Boolean checkUsername(String username)</li>
 <li>List<Order> getListOfOrderByProductName(String name)</li> 
+
+InventoryService pääsee käsiksi user, product ja order inventoryManagement.dao oleviin luokkiin, millä toteutetaan pitkäaikaistallennus. 
+Nämä inventoryManagement.dao olevat luokat toteuttavat ProductDao, UserDao ja orderDao rajapinnat. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
+
+<h2>Tietojen pysyväistallennus</h2>
+
+Pakkauksessa inventoryMangement.dao olevat luokat FileUserDao, FileProductDao ja FileOrderDao toteuttavat tietojen tallentamisesta tiedostoihin.
+Luokat noudattavat Data Access Object -suunnittelumallia ja tarvittaessa ne voidaan korvata, vaikka SQL-pohjaisella tallennuksella. Testasin tämän toimivuutta kehitysvaiheessa, kun minulla oli ArrayList-pohjainen tallennus. DAO toiminnallisuus toimi hyvin tässä. Tätä hyödynnetään testauksessa, kun tiedot tallennetaan keskusmuistiin pitkäaikaisen tallennuksen sijasta.
+
+<h3>Tiedostot</h3>
+
+Sovellus tallentaa tiedot eri tiedostoihin: order, product ja user. Nämä tiedostot ovat csv formaattia. Sovelluksen juuressa oleva konfikuraatiotiedosto (config.properties) määrittelee näiden tiedostojen nimet.
+
+User:
+
+`
+Test,Test
+Test1,Test1
+`
+
+Ensimmäisenä käyttäjätunnus (username) ja salasana (password)
+
+Order:
+
+`
+0,Product A,2020-05-09,true,10
+1,Product A,2020-05-09,false,5
+`
+
+Ensimmäisenä id, tuote (product), päivä (date), onko sisääntuleva (isInComing) ja määrä (amount).
+
+Product:
+
+`
+Product A,10,35
+`
+
+Ensimmäisenä nimi (name), varmuuslimiitti (safetylimit) ja nykyinen varastomäärä (current inventory)
 
 <h2>Päätoiminnallisuudet</h2>
 <h3>Käyttäjän kirjautuminen</h3>
