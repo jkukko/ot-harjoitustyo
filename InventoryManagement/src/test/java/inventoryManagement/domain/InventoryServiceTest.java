@@ -79,7 +79,6 @@ public class InventoryServiceTest {
         assertEquals(5, this.varastoService.outGoingOrder("Maito", 10));
     }
     
-
     
     
 }

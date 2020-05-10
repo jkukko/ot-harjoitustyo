@@ -32,3 +32,9 @@ Sovellus käynnistää uuden käyttäjän luomisnäkymän.
 <img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-2.png" width="480">
 
 Uuden käyttäjän luominen onnistuu syöttämällä käyttäjätunnus ja salasana ja painamalla save buttonia
+
+<h2>Tilauksen kirjaaminen</h2>
+
+Valitse option valikosta "Incoming order". Tämän jälkeen voitko valita nykyisen tuotteen, tai kirjoittaa uuden tuote nimen. Tämän lisäksi syötetään haluttu määrä. Kun nämä on syötetty voidaan painaa "save", mikä tallentaa tilauksent.
+
+<img src="" width=400>
