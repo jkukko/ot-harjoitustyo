@@ -41,6 +41,20 @@ Valitse option valikosta "Incoming order". Tämän jälkeen voitko valita nykyis
 
 <h2>Nykyisen varastotilanteen tarkastaminen</h2>
 
-Valitse option valikosta "Current inventory". Tämä tuo esiin taulun, mistä näkyy nykyisen varastotilanteen. Taulussa on tuotteen nimi, määrä, varmuusvarastonlimitti, sekä tämän ja nykyisen varastoarvon erostus.
+Valitse option valikosta "Current inventory". Tämä tuo esiin taulun, mistä näkyy nykyisen varastotilanteen. Taulussa on tuotteen nimi, määrä, varmuusvarastonlimitti, sekä nykyisen määrän ja  varastoarvon erostus.
 
 <img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-4.png" width=400>
+
+
+<h2>Varastosta ottaminen</h2>
+
+Valitse option valikosta "Take from Inventory". Toimii melko samalla periaatteella kuin varstoon lisääminen (tilauksen kirjaaminen). Erona on että ainoastaan varastossa olevia tuotteita voi valita. Valitse tuote alasvetovalikosta ja kirjoita haluttu määrä kentään. Tämän jälkeen paina save-buttonia.
+
+<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-6.png" width=400>
+
+<h2>Tuotteen varmuuslimiitin vaihtaminen</h2>
+
+Valitse option valikosta "Edit Product". Valitse alasvetovalikosta haluttu tuote. Tämän jälkeen ohjelma tuo syöttökenttään tuotteen nykyisen varmuuslimitin. Siihen voi kirjata uuden halutun, ja tämän jälkeen painaa save-buttonia. Jos haluaa tarkistaa, että limitti vaihtui, voi tämän tarkistaa "Current Inventory" näkymästä.
+
+<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-7.png" width=400>
+
