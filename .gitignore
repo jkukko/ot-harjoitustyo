@@ -1,3 +1,7 @@
 /InventoryManagement/target
 /InventoryManagement/nbproject/
 *.swp
+/InventoryManagement/orders.csv
+/InventoryManagement/products.csv
+/InventoryManagement/users.csv
+/InventoryManagement/nbactions.xml
