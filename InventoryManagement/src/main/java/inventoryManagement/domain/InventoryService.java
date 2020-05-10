@@ -93,7 +93,7 @@ public class InventoryService {
      * Print orders of specific product
      * @param name product name
      */
-    
+/*    
     public void printProductOrders(String name) {
         List<Order> orders = new ArrayList<>();
         orders = this.orderDao.findByTuoteName(name);
@@ -101,7 +101,7 @@ public class InventoryService {
             System.out.println(orders.get(i));
         }
     }
-            
+ */           
     /**
      * Return all Product names as a list
      * @return List of product names as string List
