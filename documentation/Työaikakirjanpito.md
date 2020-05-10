@@ -30,4 +30,5 @@
 |Dokumentaation päivitys      |      1h       |   9.5    |
 |Historian tarkastaminen      |      1h       |   10.5   |
 |Arkkitehtuurikuvaus          |      1h       |   10.5   |
+|Testaus DAO-luokille         |      2h       |   10.5   |
 |Total                        |     46h       |   10.5   |
