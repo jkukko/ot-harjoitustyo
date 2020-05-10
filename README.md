@@ -53,3 +53,9 @@ Testikattavuusraportti luodaan komennolla
 <h3>Checkstyle</h3>
 
 `mvn jxr:jxr checkstyle:checkstyle`
+
+<h3>JavaDoc</h3>
+
+JavaDoc luodaan komennolla
+
+`mvn javadoc:javadoc`

@@ -76,7 +76,7 @@ public class FileOrderDao implements OrderDao {
                         order.getDate() + "," +
                         order.isIsIncomingOrder() + "," +
                         order.getAmount() + "\n"
-                    );
+                );
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -85,10 +85,10 @@ public class FileOrderDao implements OrderDao {
 
     @Override
     public int lstId() {
-        if (this.orders.size()==0) {
+        if (this.orders.size() == 0) {
             return 0;
         }
-        int id = this.orders.get(this.orders.size()-1).getId();
+        int id = this.orders.get(this.orders.size() - 1).getId();
         return id;
     }
     
