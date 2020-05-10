@@ -51,7 +51,6 @@ User:
 
 `
 Test,Test
-Test1,Test1
 `
 
 Ensimmäisenä käyttäjätunnus (username) ja salasana (password)
@@ -60,7 +59,6 @@ Order:
 
 `
 0,Product A,2020-05-09,true,10
-1,Product A,2020-05-09,false,5
 `
 
 Ensimmäisenä id, tuote (product), päivä (date), onko sisääntuleva (isInComing) ja määrä (amount).
