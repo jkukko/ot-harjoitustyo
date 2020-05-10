@@ -251,7 +251,28 @@ public class GraphicUi extends Application {
         
         table.getColumns().addAll(productColumn, amountColumn, safetyColumn, differenceColum);
         
+        TableView tableOrders = new TableView();
+        TableColumn idColumn = new TableColumn("id");
+        idColumn.setMaxWidth(50);
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         
+        TableColumn productColumn2 = new TableColumn("Product");
+        productColumn2.setMinWidth(150);
+        productColumn2.setCellValueFactory(new PropertyValueFactory<>("Product"));
+        
+        TableColumn dateColumn = new TableColumn("Date");
+        dateColumn.setMinWidth(150);
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        
+        TableColumn inComingColumn = new TableColumn("Incoming");
+        inComingColumn.setMinWidth(100);
+        inComingColumn.setCellValueFactory(new PropertyValueFactory<>("isIncomingOrder"));
+
+        TableColumn orderColumn = new TableColumn("Amount");
+        orderColumn.setMinWidth(100);
+        orderColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        
+        tableOrders.getColumns().addAll(idColumn, productColumn2, dateColumn, inComingColumn, orderColumn);
        
         // Edit product elements
         Label safetyLimitLabel = new Label("Safety limit");
@@ -316,9 +337,9 @@ public class GraphicUi extends Application {
             grid.getChildren().clear();
             MenuItem target = (MenuItem) e.getTarget();
             String productName = target.getText();
-            this.varastoService.printProductOrders(productName);
-            grid.add(new Label(productName), 0, 0);
-            layout.setCenter(grid);
+            tableOrders.getItems().clear();
+            tableOrders.setItems(FXCollections.observableArrayList(this.varastoService.getListOfOrderByProductName(productName)));
+            layout.setCenter(tableOrders);
         });
 
         this.mainScene = new Scene(layout, 620, 300);

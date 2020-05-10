@@ -183,4 +183,8 @@ public class InventoryService {
     public Boolean checkUsername(String username) {
         return this.userdao.checkUsername(username);
     }
+    
+    public List<Order> getListOfOrderByProductName(String name) {
+        return this.orderDao.findByTuoteName(name);
+    }
 }

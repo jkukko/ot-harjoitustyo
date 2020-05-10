@@ -15,7 +15,7 @@ Sovelluksessa on aluksi  yhdenlaisia käyttäjiä, normaali käyttäjä. Heillä
 <li>Käyttäjä voi listata kaikki tuotteet järjestelmässä</li>
 <li>Käyttäjä voi kirjata varastoon tavaraa</li>
 <li>Käyttäjä voi kuluttaa varastosta tavaraa</li>
-<li>Käyttäjä voi tutkia yksittäisen tuotteen varastohistoriaa <strong>ei tehty</strong></li>
+<li>Käyttäjä voi tutkia yksittäisen tuotteen varastohistoriaa</li>
 <li>Käyttäjä voi muuttaa tuotteen varmuusvarasto limittiä</li>
 <li>Käyttäjä voi kirjautua ulos järjestelmästä</li>
 <h2>Jatkokehitys</h2>
