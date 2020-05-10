@@ -13,6 +13,7 @@ Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria, ja koodin pakka
 <h2>Käyttöliittymä</h2>
 
 Käyttöliittymä koostuu teknisesti kolmesta eri näkymästä: loginScene, newUserScene ja mainScene. Nämä on toteutettu omina Scene-olioina. Näkymät sijoitetaan sovelluksen stageen yksi kerrallaan.
+
 Kuitenkin mainScenen elementit vaihtuvat riippuen käyttäjän valinnoista. Näitä valintoja/"näkymiä" ovat current inventory, incoming order, take from inventory, edit product ja tuotekohtainen tilaushistoria. Näihin liittyviä elementtejä määritellään Menu-Olion ja MenuItem-Olion avulla.
 Pääsääntöisesti sovelluslogiikka on pyritty erittämään täysin käyttöliittymästä. Tarkoituksena on, että käyttöliittymä kutsuu erilaisilla parametreilla inventoryService olion metodeja.
 
@@ -32,6 +33,7 @@ Toiminnalisuudesta vastaa InventoryService luokka. Sen metodeja ovat
 <li>void create(String username, String password)</li>
 <li>Boolean checkUsername(String username)</li>
 <li>List<Order> getListOfOrderByProductName(String name)</li> 
+
 
 InventoryService pääsee käsiksi user, product ja order inventoryManagement.dao oleviin luokkiin, millä toteutetaan pitkäaikaistallennus. 
 Nämä inventoryManagement.dao olevat luokat toteuttavat ProductDao, UserDao ja orderDao rajapinnat. Luokkien toteutuksen injektoidaan sovelluslogiikalle konstruktorikutsun yhteydessä.
