@@ -88,20 +88,7 @@ public class InventoryService {
         return amount;
            
     }
-    
-    /**
-     * Print orders of specific product
-     * @param name product name
-     */
-/*    
-    public void printProductOrders(String name) {
-        List<Order> orders = new ArrayList<>();
-        orders = this.orderDao.findByTuoteName(name);
-        for (int i = 0; i < orders.size(); i++) {
-            System.out.println(orders.get(i));
-        }
-    }
- */           
+
     /**
      * Return all Product names as a list
      * @return List of product names as string List
@@ -144,15 +131,7 @@ public class InventoryService {
     public void changeSafetyStock(String name, int amount) {
         this.productDao.changeSafetyLimit(name, amount);
     }
-  
-    public void visualizeOrder(String productName) {
-        System.out.println(productName);
-        List<Order> orders = this.orderDao.findByTuoteName(productName);
-        for (int i = 0; i < orders.size(); i++) {
-            System.out.println(orders.get(i).toString());
-        }
-    }
-    
+      
     /**
      * Login into Inventory Management by using specific username and password
      * @param username usersname

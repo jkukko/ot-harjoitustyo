@@ -19,10 +19,10 @@ import java.util.Scanner;
  */
 public class FileOrderDao implements OrderDao {
     private List<Order> orders;
-    private FileProductDao fileProductDao;
+    private ProductDao fileProductDao;
     private String file;
     
-    public FileOrderDao(String file, FileProductDao fileProductDao) {
+    public FileOrderDao(String file, ProductDao fileProductDao) {
         this.orders = new ArrayList<>();
         this.file = file;
         this.fileProductDao = fileProductDao;
