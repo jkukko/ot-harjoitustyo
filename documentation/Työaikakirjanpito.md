@@ -29,4 +29,5 @@
 |Testauksen kehittäminen      |      2h       |   9.5    |
 |Dokumentaation päivitys      |      1h       |   9.5    |
 |Historian tarkastaminen      |      1h       |   10.5   |
-|Total                        |     45h       |   10.5   |
+|Arkkitehtuurikuvaus          |      1h       |   10.5   |
+|Total                        |     46h       |   10.5   |
