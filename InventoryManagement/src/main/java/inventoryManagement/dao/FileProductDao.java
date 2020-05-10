@@ -40,6 +40,12 @@ public class FileProductDao implements ProductDao {
         }
         
     }
+    
+    /**
+     * Can create new product aka save it
+     * @param product 
+     * @return product
+     */
 
     @Override
     public Product create(Product product) {
@@ -49,6 +55,12 @@ public class FileProductDao implements ProductDao {
         }
         return product;        
     }
+    
+    /**
+     * Find product by product name
+     * @param name product
+     * @return product
+     */
 
     @Override
     public Product findByName(String name) {
@@ -63,11 +75,23 @@ public class FileProductDao implements ProductDao {
         }
         return null;
     }
+    
+    /**
+     * Return all products
+     * @return List of products
+     */
 
     @Override
     public List<Product> getAll() {
         return this.products;
     }
+    
+    /**
+     * Change safetystock by a specific product
+     * @param name product name
+     * @param amount safety stock amount
+     * @return product
+     */
 
     @Override
     public Product changeSafetyLimit(String name, int amount) {
@@ -77,12 +101,25 @@ public class FileProductDao implements ProductDao {
         save();
         return product;        
     }
+    
+    /**
+     * Return safety stocl by specific product
+     * @param name product
+     * @return int
+     */
 
     @Override
     public Integer getSafetyStoct(String name) {
         Product t = this.findByName(name);
         return t.getSafetyAmmount();
     }
+    
+    /**
+     * Change current stock a specific product
+     * @param name product
+     * @param amount
+     * @return product
+     */
 
     @Override
     public Product changeCurrentStock(String name, int amount) {

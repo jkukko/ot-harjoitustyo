@@ -42,6 +42,12 @@ public class FileOrderDao implements OrderDao {
             System.out.println(e);
         }
     }
+    
+    /**
+     * Can create new order aka save it 
+     * @param order
+     * @return order
+     */
 
     @Override
     public Order create(Order order) {
@@ -49,6 +55,12 @@ public class FileOrderDao implements OrderDao {
         save();
         return order;
     }
+    
+    /**
+     * Find order by a product name
+     * @param name product name
+     * @return List of orders
+     */
 
     @Override
     public List<Order> findByTuoteName(String name) {
@@ -61,6 +73,11 @@ public class FileOrderDao implements OrderDao {
         }
         return ordersByProductName;
     }
+    
+    /**
+     * Return all orders
+     * @return List orders
+     */
 
     @Override
     public List<Order> getAll() {

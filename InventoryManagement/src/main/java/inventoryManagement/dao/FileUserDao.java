@@ -34,6 +34,12 @@ public class FileUserDao implements UserDao {
             System.out.println(e);
         }
     }
+    
+    /**
+     * Create a new user aka save it
+     * @param user 
+     * @return user
+     */
 
     @Override
     public User create(User user) {
@@ -41,6 +47,12 @@ public class FileUserDao implements UserDao {
         save();
         return user;
     }
+    
+    /**
+     * Find user by specific user's name
+     * @param username
+     * @return user
+     */
 
     @Override
     public User findByUsername(String username) {
@@ -52,11 +64,23 @@ public class FileUserDao implements UserDao {
         }
         return null;
     }
+    
+    /**
+     * Return all users
+     * @return List of users
+     */
 
     @Override
     public List<User> getAll() {
         return this.users;
     }
+    
+    /**
+     * Login with username and password
+     * @param username user's username
+     * @param password user's password
+     * @return Boolean
+     */
 
     @Override
     public Boolean login(String username, String password) {
@@ -69,6 +93,12 @@ public class FileUserDao implements UserDao {
         }
         return false;
     }
+    
+    /**
+     * Check if this username already exists
+     * @param username user's username
+     * @return Boolean
+     */
 
     @Override
     public Boolean checkUsername(String username) {

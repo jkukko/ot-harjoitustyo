@@ -134,7 +134,7 @@ public class InventoryService {
       
     /**
      * Login into Inventory Management by using specific username and password
-     * @param username usersname
+     * @param username user's username
      * @param password password
      * @return if username and password are allready create, then returns true else false
      */
@@ -162,6 +162,12 @@ public class InventoryService {
     public Boolean checkUsername(String username) {
         return this.userdao.checkUsername(username);
     }
+    
+    /**
+     * Return list of orders by specific product
+     * @param name product name
+     * @return List of orders
+     */
     
     public List<Order> getListOfOrderByProductName(String name) {
         return this.orderDao.findByTuoteName(name);
