@@ -30,6 +30,8 @@ Sovelluksen avulla käyttäjillä on mahdollista pitää kirjaa varastotilantees
 
 [Viikko 6](https://github.com/jkukko/ot-harjoitustyo/releases/tag/Viikko6)
 
+[Loppupalautus](https://github.com/jkukko/ot-harjoitustyo/releases/tag/Loppupalautus)
+
 <h2>Komentorivitoiminnot</h2>
 
 <h3>Testaus</h3>
