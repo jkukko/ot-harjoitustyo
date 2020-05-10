@@ -1,7 +1,9 @@
 package inventoryManagement.domain;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -70,6 +72,14 @@ public class InventoryServiceTest {
         this.varastoService.changeSafetyStock("Maito", 10);
         assertEquals(10, this.varastoService.getSafetyStockLimit("Maito"));
     }
+    
+    @Test
+    public void takingFromInventoryMoreThanThereIs() {
+        this.varastoService.incomingOrder("Maito", 5);
+        assertEquals(5, this.varastoService.outGoingOrder("Maito", 10));
+    }
+    
+
     
     
 }

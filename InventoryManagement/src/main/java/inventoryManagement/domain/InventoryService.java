@@ -57,27 +57,6 @@ public class InventoryService {
     }
     
     /**
-     * incoming order in specific day
-     * @param name product name
-     * @param amount amount of product in order
-     * @param date specific registration date
-     * @return  order
-     */
-    
-    private Order incomingOrderSpecificDay(String name, int amount, Date date) {
-        Date specificDay = date;
-        if (this.productDao.findByName(name) == null) {
-            this.productDao.create(new Product(name));
-        }
-        Product product = this.productDao.findByName(name);
-        int currentAmount = product.getCurrentStock();
-        this.productDao.changeCurrentStock(name, currentAmount+ amount);
-        Order order = orderDao.create(new Order(this.id, product, format.format(specificDay), true, amount));
-        this.id++;
-        return order;
-    }
-
-    /**
      * taking product from inventory
      * @param name product name
      * @param amount amount of product in order
@@ -109,36 +88,6 @@ public class InventoryService {
         return amount;
            
     }
-    
-    /**
-     * taking product in specific date
-     * @param name product name
-     * @param amount amount of product in order
-     * @param date spefic registration date
-     * @return 
-     */
-    
-    public int outGoingOrderSpecificDay(String name, int amount, Date date) {
-        Date specificDay = date;
-        if (this.productDao.findByName(name) == null) {
-            return 0;
-        }
-        Product product = this.productDao.findByName(name);
-        int currentAmount = product.getCurrentStock();
-        if (currentAmount < amount) {
-            Order order = new Order(this.id, product, this.format.format(specificDay), false, currentAmount);
-            orderDao.create(order);
-            this.id++;
-            this.productDao.changeCurrentStock(name, 0);
-            return currentAmount;
-        }
-        Order order = new Order(this.id, product, this.format.format(specificDay), false, amount);
-        orderDao.create(order);
-        this.id++;
-        this.productDao.changeCurrentStock(name, currentAmount - amount);
-        return amount;           
-    }    
-    
     
     /**
      * Print orders of specific product

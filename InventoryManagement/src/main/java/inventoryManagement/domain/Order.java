@@ -52,7 +52,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Tilaus{" + "id=" + id + "tuote=" + product + ", paiva=" + date + ", sisaanTuleva=" + isIncomingOrder + ", maara=" + amount + '}';
+        return "Order{" + "id=" + id + ",  Product=" + product + ", Date=" + date + ", IsInComing=" + isIncomingOrder + ", Amount=" + amount + '}';
     }
 
     public void setAmount(Integer amount) {
