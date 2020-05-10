@@ -2,6 +2,15 @@
 
 <h2>Konfigurointi</h2>
 
+Ohjelma olettaa, että käyttäjällä löytyy käynnistyshakemistosta konfiguraatiotiedosto _congig.properties_. Tässä filessä määritellään pysyväistallennukseen tarvittavien tiedostojen nimet.
+
+```
+userFile=users.csv
+orderFile=orders.csv
+productFile=products.csv
+
+```
+Jos näitä tiedostoja ei ole, nämä luodaan automaattisesti ensimmäisellä käynnistyskerralla.
 <h2>Ohjelman käynnistäminen</h2>
 
 Ohjelma käynnistyy komennolla
