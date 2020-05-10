@@ -10,7 +10,13 @@ Sovelluslogiikkakerroksen luokille User, Product ja Order on tehty muutama yksik
 
 <h2>Dao Luokat</h2>
 
+Kaikki kolme DAO-luokkien toiminnallisuus on testattu. Tässä on hyödynnetty tilapäisiä tiedostoja, JUnitin TemporaryFolder-ruleja.
+
 <h2>Testauskattavuus</h2>
+
+Käyttöliittymä on jätetty testauksen ja testauskattavuuden ulkopuolelle. Testikattavuus 91% ja haarautumakattavuus 89%.
+
+<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/t-1.png" width=480>
 
 <h2>Järjestelmätestaus</h2>
 Sovelluksen järjestelmä testaus on suoritettu manuaalisesti.
