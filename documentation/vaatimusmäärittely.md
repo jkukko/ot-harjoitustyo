@@ -9,7 +9,7 @@ Sovelluksessa on aluksi  yhdenlaisia käyttäjiä, normaali käyttäjä. Heillä
 <h2>Perusvesion tarjoama toiminnallisuus</h2>
 <h3>Ennen kirjautumista</h3>
 <li>Käyttäjä voi luoda järjestelmään käyttäjätunnuksen. Tämä tehdään valitsemalla käyttäjätunnus ja salasana </li> 
-<li>Käyttäjä voi kirjautua järjestelmään. Jos käyttäjää ei ole ohjelma ilmoittaa tästä, sekä ehdottaa haluaako käyttäjä luoda tunnuksen<strong>ei tehty</strong></li>
+<li>Käyttäjä voi kirjautua järjestelmään</li>
 <h3>Kirjautumisen jälkeen</h3>
 <li>Käyttäjä näkee listan tuotteista</li>
 <li>Käyttäjä voi listata kaikki tuotteet järjestelmässä</li>
