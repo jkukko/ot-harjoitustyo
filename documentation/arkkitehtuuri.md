@@ -80,12 +80,12 @@ Kun kijautumisnäkymässä oleviin syöttökenttiin, 'username' ja 'password', o
 
 <img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/a-2.png" width="480">
 
-<h3>Käyttäjän luominen<h3>
+<h3>Käyttäjän luominen</h3>
 Kun create new user-näkymään oleviin syöttökenttiinm 'username' ja 'password', on kirjattu arvot ja painetaan createNewUserButtonia, sovellus etenee seuraavasti:
 
 <img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/a-3.png" width=480>
 
-<h3>Incoming order luominen<h3>
+<h3>Incoming order luominen</h3>
 
 Kun käyttäjä on valinnut option valikosta "Incoming order" valinnan. Tämän lisäksi valinnut haluamansa tuotteen tai lisännyt uuden, sekä syöttämällä haluamansa määrän ja painamalla incomingOrder-buttonia sovellus etenee seuraavasti:
 
