@@ -87,7 +87,7 @@ Kun create new user-näkymään oleviin syöttökenttiinm 'username' ja 'passwor
 
 Kun käyttäjä on valinnut option valikosta "Incoming order" valinnan. Tämän lisäksi valinnut haluamansa tuotteen tai lisännyt uuden, sekä syöttämällä haluamansa määrän ja painamalla incomingOrder-buttonia sovellus etenee seuraavasti:
 
-<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/a-4.png> width=480>
+<img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/a-4.png" width=480>
 
 Hyvin samalla periaatteella toimii take from inventory -toiminnallisuus sekä edit product toiminnallisuus.
 
