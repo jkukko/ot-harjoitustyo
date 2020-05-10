@@ -22,6 +22,8 @@ Sovelluksen avulla käyttäjillä on mahdollista pitää kirjaa varastotilantees
 
 [Käyttöohje](https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/K%C3%A4ytt%C3%B6ohje.md)
 
+[Testausdokumentti](https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/testaus.md)
+
 <h2>Releaset</h2>
 
 [Viikko 5](https://github.com/jkukko/ot-harjoitustyo/releases/tag/viikko5)
