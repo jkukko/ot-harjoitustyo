@@ -58,8 +58,12 @@ Valitse option valikosta "Edit Product". Valitse alasvetovalikosta haluttu tuote
 
 <img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-7.png" width=400>
 
-<h2>Tuotteen varastohistorian tarkastaminen</h>
+<h2>Tuotteen varastohistorian tarkastaminen</h2>
 
 Valitse history viewn alta haluttu tuote. Huom, tämä vaatii sen, että edes yksi tuote on lisätty varastoon. Tämän jälkeen käyttäjä näkee kyseisen tuotteen tilaushistorian.
 
 <img src="https://github.com/jkukko/ot-harjoitustyo/blob/master/documentation/kuvat/k-8.png" width=400>
+
+<h2>Ohjelman sulkeminen</h2>
+
+Käyttäjä voi sulkea ohjelman kahdella tavalla. Joko sulkemalla punaisesta ruksista oikeasta yläkulmasta tai option valikon alta olevasta "Close Inventory Management" valinnasta.
