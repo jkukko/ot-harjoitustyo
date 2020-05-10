@@ -27,25 +27,25 @@ public class InventoryServiceTest {
     }
     
     @Test
-    public void varastoonVoiKirjataTuotteita() {
+    public void canAddProductsToInventory() {
         this.varastoService.incomingOrder("Maito", 10);
         assertEquals(1, this.varastoService.getProducts().size());
     }
 
     
     @Test
-    public void otaVarastotaMaaraMikaSiellaOn() {
+    public void takeAProductThatIsInInventory() {
         this.varastoService.incomingOrder("Banaani", 10);
         assertEquals(5, this.varastoService.outGoingOrder("Banaani", 5));
     }
     
     @Test
-    public void yritetaanOttaaTuoteVarastostaMitaEiOleSiella() {
+    public void cannotTakeAProductThatIsNotInInventory() {
         assertEquals(0, this.varastoService.outGoingOrder("Banaani", 5));
     }
     
     @Test
-    public void palauttaaListanTuoteidenNimista() {
+    public void returnListOfProductNames() {
         this.varastoService.incomingOrder("Banaani", 5);
         this.varastoService.incomingOrder("Maito", 3);
         List<String> lista = new ArrayList<>();
